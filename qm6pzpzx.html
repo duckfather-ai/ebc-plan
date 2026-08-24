@@ -154,11 +154,15 @@
 
   .cal-leg{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 12px;font-size:12px;color:var(--dim)}
   .cal-leg span{display:flex;align-items:center;gap:6px}
-  .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
-  .dot.t-estreno{background:var(--coral)}
-  .dot.t-reel{background:#A855C4}
-  .dot.t-grabacion{background:var(--green)}
-  .dot.t-edicion{background:#D9A227}
+  .cal-leg b{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--green-d)}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.15)}
+  .dot.d-editado{background:#C9E7D1;border-color:#63A87E}
+  .dot.d-filmado{background:#FAF04B;border-color:#D4C41C}
+  .dot.d-porfilmar{background:#F0A3A3;border-color:#D2716B}
+  .bar{width:4px;height:13px;border-radius:2px;display:inline-block}
+  .bar.t-reel{background:#A855C4}
+  .bar.t-grabacion{background:var(--green)}
+  .bar.t-edicion{background:#D9A227}
 
   .cal-wd{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
   .cal-wd span{font-size:10.5px;font-weight:700;color:var(--dim);text-transform:uppercase;
@@ -174,16 +178,28 @@
   .cal-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;line-height:1.3}
   .cal-txt{font-size:10.5px;line-height:1.3;color:var(--dim);
     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-  .cal-d.t-estreno{background:#FDECE8;border-color:#F0A99C}
-  .cal-d.t-estreno .cal-tag{color:var(--coral)}
-  .cal-d.t-estreno .cal-n{color:#A32E1C}
-  .cal-d.t-reel{background:#F7EDFA;border-color:#DDBBE7}
+  .cal-d.t-reel{border-left:4px solid #A855C4}
   .cal-d.t-reel .cal-tag{color:#8A3FA3}
-  .cal-d.t-grabacion{background:var(--green-w);border-color:var(--green-l)}
+  .cal-d.t-grabacion{border-left:4px solid var(--green);background:var(--green-w)}
   .cal-d.t-grabacion .cal-tag{color:var(--green)}
-  .cal-d.t-edicion{background:#FBF4DF;border-color:#E3CB86}
+  .cal-d.t-edicion{border-left:4px solid #D9A227}
   .cal-d.t-edicion .cal-tag{color:#9A7413}
+  .cal-d.t-estreno .cal-tag{color:var(--coral)}
   .cal-d.pasado{opacity:.5}
+  /* estado de producción — mismo código que usa el equipo */
+  .cal-d.e-editado{background:#C9E7D1;border-color:#63A87E}
+  .cal-d.e-editado .cal-n{color:#1B5238}
+  .cal-d.e-editado .cal-tag{color:#2E7A52}
+  .cal-d.e-filmado{background:#FAF04B;border-color:#D4C41C}
+  .cal-d.e-filmado .cal-n,.cal-d.e-filmado .cal-tag{color:#5E5405}
+  .cal-d.e-filmado .cal-txt{color:#6B6013}
+  .cal-d.e-porfilmar{background:#F0A3A3;border-color:#D2716B}
+  .cal-d.e-porfilmar .cal-n,.cal-d.e-porfilmar .cal-tag{color:#7E241C}
+  .cal-d.e-porfilmar .cal-txt{color:#8C3830}
+  .est{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:6px}
+  .est-editado{background:#C9E7D1;color:#1B5238}
+  .est-filmado{background:#FAF04B;color:#5E5405}
+  .est-porfilmar{background:#F0A3A3;color:#7E241C}
   .cal-d.hoy{box-shadow:inset 0 0 0 2px var(--ink);opacity:1}
   .cal-d.sel{box-shadow:inset 0 0 0 2px var(--green);border-color:var(--green)}
 
@@ -355,10 +371,16 @@
   </div>
 
   <div class="cal-leg">
-    <span><i class="dot t-estreno"></i>Estreno</span>
-    <span><i class="dot t-reel"></i>Reel</span>
-    <span><i class="dot t-grabacion"></i>Grabación</span>
-    <span><i class="dot t-edicion"></i>Edición</span>
+    <b>Estado del episodio</b>
+    <span><i class="dot d-editado"></i>Filmado y editado</span>
+    <span><i class="dot d-filmado"></i>Filmado, sin editar</span>
+    <span><i class="dot d-porfilmar"></i>Por filmar</span>
+  </div>
+  <div class="cal-leg">
+    <b>Tipo de día</b>
+    <span><i class="bar t-reel"></i>Reel</span>
+    <span><i class="bar t-grabacion"></i>Grabación</span>
+    <span><i class="bar t-edicion"></i>Edición</span>
   </div>
 
   <div class="cal-wd"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
@@ -366,12 +388,19 @@
 
   <div id="cal-det" class="cal-det" hidden></div>
 
+  <div class="box hot">
+    <h4>No hay un solo verde en toda la grilla</h4>
+    <p style="margin-bottom:0">De los diez estrenos que quedan, cinco están en amarillo — filmados pero sin editar — y cinco en rojo, sin filmar.
+    Ninguno está terminado y listo para subir. Con estreno semanal eso significa que cada jueves depende de trabajo que todavía no empezó,
+    y que los cinco rojos necesitan además que se agende la grabación.</p>
+  </div>
+
   <h2>Grabaciones</h2>
   <div class="scroll">
     <table>
       <thead><tr><th>Fecha</th><th>Qué se graba</th><th>Dónde</th><th>Estado</th></tr></thead>
       <tbody>
-        <tr><td class="d">Mié 2 sep</td><td><b>Doble jornada:</b> Mike Break 43 + Mike vs Agustina</td><td>La Orquídea</td><td><span class="p op">Por cerrar</span></td></tr>
+        <tr><td class="d">Mié 2 sep</td><td><b>Doble jornada:</b> Mike Break 43 + Mike vs Tina</td><td>La Orquídea</td><td><span class="p op">Por cerrar</span></td></tr>
         <tr><td class="d">Por definir</td><td>Mike en el simulador</td><td>Yarda 51</td><td><span class="p op">Depende del invitado</span></td></tr>
         <tr><td class="d">Por definir</td><td>Break 43 + Mike vs Maggie</td><td>Pilará</td><td><span class="p todo">Sin agendar</span></td></tr>
       </tbody>
@@ -392,19 +421,19 @@
   <p class="lede">Estado real de cada episodio de acá al 29 de octubre.</p>
   <div class="scroll">
     <table>
-      <thead><tr><th>Estreno</th><th>Episodio</th><th>Filmado</th><th>Editado</th><th>Cargado</th></tr></thead>
+      <thead><tr><th>Estreno</th><th>Episodio</th><th colspan="3">Estado</th></tr></thead>
       <tbody>
-        <tr><td class="d">20 ago</td><td><b>Break 43 — Pilar Golf</b> · 38:08</td><td><span class="p ok">Sí</span></td><td><span class="p ok">Sí</span></td><td><span class="p ok">Al aire</span></td></tr>
-        <tr><td class="d">27 ago</td><td><b>Sesión de fitting de Mike</b></td><td><span class="p ok">Sí</span></td><td><span class="p op">En curso</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">3 sep</td><td>Pipe vs Mike — Pilar Golf, Parte 1</td><td><span class="p ok">Sí</span></td><td><span class="p op">Semana del 31</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">10 sep</td><td>Pipe vs Mike — Pilar Golf, Parte 2</td><td><span class="p ok">Sí</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">17 sep</td><td>Mike Break 43 — La Orquídea</td><td><span class="p op">Se graba el 2 sep</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">24 sep</td><td>Mike vs Agustina — La Orquídea</td><td><span class="p op">Se graba el 2 sep</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">1 oct</td><td>Mike en Yarda 51</td><td><span class="p todo">Sin fecha</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">8 oct</td><td>Mike &amp; Chacho — Scramble, Parte 1</td><td><span class="p ok">Sí</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">15 oct</td><td>Mike &amp; Chacho — Scramble, Parte 2</td><td><span class="p ok">Sí</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">22 oct</td><td>Mike Break 43 — Pilará</td><td><span class="p todo">Sin fecha</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
-        <tr><td class="d">29 oct</td><td>Mike vs Maggie — Pilará</td><td><span class="p todo">Sin fecha</span></td><td><span class="p todo">No</span></td><td><span class="p todo">No</span></td></tr>
+        <tr><td class="d">20 ago</td><td><b>Break 43 — Pilar Golf</b> · 38:08</td><td colspan="3"><span class="est est-editado">Filmado y editado · al aire</span></td></tr>
+        <tr><td class="d">27 ago</td><td><b>Sesión de fitting de Mike</b></td><td colspan="3"><span class="est est-filmado">Filmado, en edición</span></td></tr>
+        <tr><td class="d">3 sep</td><td>Pipe vs Mike — Pilar Golf, Parte 1</td><td colspan="3"><span class="est est-filmado">Filmado, sin editar</span></td></tr>
+        <tr><td class="d">10 sep</td><td>Pipe vs Mike — Pilar Golf, Parte 2</td><td colspan="3"><span class="est est-filmado">Filmado, sin editar</span></td></tr>
+        <tr><td class="d">17 sep</td><td>Mike Break 43 — La Orquídea</td><td colspan="3"><span class="est est-porfilmar">Por filmar</span> <span class="dim">· se graba el 2 de sep</span></td></tr>
+        <tr><td class="d">24 sep</td><td>Mike vs Tina — La Orquídea</td><td colspan="3"><span class="est est-porfilmar">Por filmar</span> <span class="dim">· se graba el 2 de sep</span></td></tr>
+        <tr><td class="d">1 oct</td><td>Mike en Yarda 51</td><td colspan="3"><span class="est est-porfilmar">Por filmar</span> <span class="dim">· sin fecha de grabación</span></td></tr>
+        <tr><td class="d">8 oct</td><td>Mike &amp; Chacho — Scramble, Parte 1</td><td colspan="3"><span class="est est-filmado">Filmado, sin editar</span></td></tr>
+        <tr><td class="d">15 oct</td><td>Mike &amp; Chacho — Scramble, Parte 2</td><td colspan="3"><span class="est est-filmado">Filmado, sin editar</span></td></tr>
+        <tr><td class="d">22 oct</td><td>Mike Break 43 — Pilará</td><td colspan="3"><span class="est est-porfilmar">Por filmar</span> <span class="dim">· sin fecha de grabación</span></td></tr>
+        <tr><td class="d">29 oct</td><td>Mike vs Maggie — Pilará</td><td colspan="3"><span class="est est-porfilmar">Por filmar</span> <span class="dim">· sin fecha de grabación</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -482,7 +511,7 @@
       <tbody>
         <tr><td><b>Pipe</b><br><span class="dim">Elenco fijo</span></td><td>Personaje recurrente. Juega bastante mejor que Mike y ese contraste es el motor del formato</td><td>Pilar Golf</td><td>3 y 10 sep</td><td><span class="p ok">Filmado</span></td></tr>
         <tr><td><b>Chacho</b><br><span class="dim">Elenco fijo</span></td><td>Recurrente. Scramble de 18 hoyos, se parte en dos episodios</td><td>La Providencia</td><td>8 y 15 oct</td><td><span class="p ok">Filmado</span></td></tr>
-        <tr><td><b>Agustina Gómez Cisterna</b><br><span class="dim">@tinagomezcisterna</span></td><td>Creadora de contenido de golf, 6,7 mil seguidores</td><td>La Orquídea</td><td>24 sep</td><td><span class="p op">A confirmar</span></td></tr>
+        <tr><td><b>Agustina "Tina" Gómez Cisterna</b><br><span class="dim">@tinagomezcisterna</span></td><td>Creadora de contenido de golf, 6,7 mil seguidores</td><td>La Orquídea</td><td>24 sep</td><td><span class="p op">A confirmar</span></td></tr>
         <tr><td><b>Juan Martín Verano</b><br><span class="dim">@summergolf1986</span></td><td>Dueño de Yarda 51 y profesor de golf. Además es la puerta de entrada hacia dos futbolistas como futuros invitados</td><td>Yarda 51</td><td>1 oct</td><td><span class="p op">En duda</span></td></tr>
         <tr><td><b>Maggie Simmer</b><br><span class="dim">@maggiesimmer</span></td><td>Golfista profesional del Ladies European Tour. Jugó los Juegos Olímpicos de Tokio 2020</td><td>Pilará</td><td>29 oct</td><td><span class="p op">En duda · falta el contacto</span></td></tr>
         <tr><td><b>Santiago Canda</b><br><span class="dim">@_taticanda</span></td><td>Golfista</td><td>Cancha Norte</td><td class="dim">—</td><td><span class="p todo">Descartado</span></td></tr>
@@ -882,40 +911,40 @@ Instagram: @elbogeyclub</div>
 
   /* ================= calendario ================= */
   var DIAS = {
-    '2026-08-20': {t:'estreno', n:'Break 43 — 9 hoyos en Pilar Golf', ep:'Episodio 1', cancha:'Pilar Golf', nota:'Ya salió. 4.600 vistas en los primeros cuatro días.'},
+    '2026-08-20': {t:'estreno', e:'editado', n:'Break 43 — 9 hoyos en Pilar Golf', ep:'Episodio 1', cancha:'Pilar Golf', nota:'Ya salió. 4.600 vistas en los primeros cuatro días.'},
     '2026-08-24': {t:'edicion', n:'Edición del fitting', org:'Mike vs Pipe — Parte 1'},
     '2026-08-25': {t:'edicion', n:'Edición del fitting', org:'Mike vs Pipe — Parte 1'},
     '2026-08-26': {t:'reel',    n:'Reel de anticipación del fitting', org:'Mike vs Pipe — Parte 1', nota:'Además sigue la edición del fitting.'},
-    '2026-08-27': {t:'estreno', n:'Sesión de fitting de Mike', ep:'Episodio 2'},
+    '2026-08-27': {t:'estreno', e:'filmado', n:'Sesión de fitting de Mike', ep:'Episodio 2'},
     '2026-08-28': {t:'edicion', n:'Edición Mike vs Pipe — Parte 1', org:'Mike vs Pipe — Parte 2'},
     '2026-08-29': {t:'edicion', n:'Edición Mike vs Pipe — Parte 1', org:'Mike vs Pipe — Parte 2'},
     '2026-08-30': {t:'edicion', n:'Edición Mike vs Pipe — Parte 1', org:'Mike vs Pipe — Parte 2'},
 
     '2026-09-01': {t:'edicion', n:'Edición Mike vs Pipe — Parte 1', org:'Mike vs Pipe — Parte 2'},
-    '2026-09-02': {t:'grabacion', n:'Grabación doble: Mike Break 43 y Mike vs Agustina', cancha:'La Orquídea',
+    '2026-09-02': {t:'grabacion', n:'Grabación doble: Mike Break 43 y Mike vs Tina', cancha:'La Orquídea',
                    nota:'De esta jornada salen los episodios del 17 y del 24 de septiembre. Además hay que publicar el reel de anticipación de Pipe vs Mike Parte 1.'},
-    '2026-09-03': {t:'estreno', n:'Pipe vs Mike — Pilar Golf, Parte 1', ep:'Episodio 3', cancha:'Pilar Golf'},
+    '2026-09-03': {t:'estreno', e:'filmado', n:'Pipe vs Mike — Pilar Golf, Parte 1', ep:'Episodio 3', cancha:'Pilar Golf'},
     '2026-09-04': {t:'edicion', n:'Edición Mike vs Pipe — Parte 2', org:'Mike Break 43 — La Orquídea'},
     '2026-09-05': {t:'edicion', n:'Edición Mike vs Pipe — Parte 2', org:'Mike Break 43 — La Orquídea'},
     '2026-09-06': {t:'edicion', n:'Edición Mike vs Pipe — Parte 2', org:'Mike Break 43 — La Orquídea'},
     '2026-09-07': {t:'edicion', n:'Edición Mike vs Pipe — Parte 2', org:'Mike Break 43 — La Orquídea'},
     '2026-09-08': {t:'edicion', n:'Edición Mike vs Pipe — Parte 2', org:'Mike Break 43 — La Orquídea'},
     '2026-09-09': {t:'reel',    n:'Reel de anticipación de Pipe vs Mike Parte 2'},
-    '2026-09-10': {t:'estreno', n:'Pipe vs Mike — Pilar Golf, Parte 2', ep:'Episodio 4', cancha:'Pilar Golf'},
-    '2026-09-11': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Agustina'},
-    '2026-09-12': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Agustina'},
-    '2026-09-13': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Agustina'},
-    '2026-09-14': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Agustina'},
-    '2026-09-15': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Agustina'},
+    '2026-09-10': {t:'estreno', e:'filmado', n:'Pipe vs Mike — Pilar Golf, Parte 2', ep:'Episodio 4', cancha:'Pilar Golf'},
+    '2026-09-11': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Tina'},
+    '2026-09-12': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Tina'},
+    '2026-09-13': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Tina'},
+    '2026-09-14': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Tina'},
+    '2026-09-15': {t:'edicion', n:'Edición Mike Break 43 — La Orquídea', org:'Mike vs Tina'},
     '2026-09-16': {t:'reel',    n:'Reel de anticipación de Mike Break 43 — La Orquídea'},
-    '2026-09-17': {t:'estreno', n:'Mike Break 43 — La Orquídea', ep:'Episodio 5', cancha:'La Orquídea'},
-    '2026-09-18': {t:'edicion', n:'Edición Mike vs Agustina', org:'Mike en Yarda 51'},
-    '2026-09-19': {t:'edicion', n:'Edición Mike vs Agustina', org:'Mike en Yarda 51'},
-    '2026-09-20': {t:'edicion', n:'Edición Mike vs Agustina', org:'Mike en Yarda 51'},
-    '2026-09-21': {t:'edicion', n:'Edición Mike vs Agustina', org:'Mike en Yarda 51'},
-    '2026-09-22': {t:'edicion', n:'Edición Mike vs Agustina', org:'Mike en Yarda 51'},
-    '2026-09-23': {t:'reel',    n:'Reel de anticipación de Mike vs Agustina'},
-    '2026-09-24': {t:'estreno', n:'Mike vs Agustina Gómez Cisterna', ep:'Episodio 6', cancha:'La Orquídea', alerta:'La invitada figura como "a confirmar" en la planilla.'},
+    '2026-09-17': {t:'estreno', e:'porfilmar', n:'Mike Break 43 — La Orquídea', ep:'Episodio 5', cancha:'La Orquídea'},
+    '2026-09-18': {t:'edicion', n:'Edición Mike vs Tina', org:'Mike en Yarda 51'},
+    '2026-09-19': {t:'edicion', n:'Edición Mike vs Tina', org:'Mike en Yarda 51'},
+    '2026-09-20': {t:'edicion', n:'Edición Mike vs Tina', org:'Mike en Yarda 51'},
+    '2026-09-21': {t:'edicion', n:'Edición Mike vs Tina', org:'Mike en Yarda 51'},
+    '2026-09-22': {t:'edicion', n:'Edición Mike vs Tina', org:'Mike en Yarda 51'},
+    '2026-09-23': {t:'reel',    n:'Reel de anticipación de Mike vs Tina'},
+    '2026-09-24': {t:'estreno', e:'porfilmar', n:'Mike vs Tina — La Orquídea', ep:'Episodio 6', cancha:'La Orquídea', alerta:'La invitada figura como "a confirmar" en la planilla.'},
     '2026-09-25': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
     '2026-09-26': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
     '2026-09-27': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
@@ -923,34 +952,34 @@ Instagram: @elbogeyclub</div>
     '2026-09-29': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
     '2026-09-30': {t:'reel',    n:'Reel de anticipación de Mike en Yarda 51'},
 
-    '2026-10-01': {t:'estreno', n:'Mike en Yarda 51', ep:'Episodio 7', cancha:'Yarda 51', alerta:'El invitado figura "en duda" y todavía no hay fecha de grabación.'},
+    '2026-10-01': {t:'estreno', e:'porfilmar', n:'Mike en Yarda 51', ep:'Episodio 7', cancha:'Yarda 51', alerta:'El invitado figura "en duda" y todavía no hay fecha de grabación.'},
     '2026-10-02': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
     '2026-10-03': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
     '2026-10-04': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
     '2026-10-05': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
     '2026-10-06': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
     '2026-10-07': {t:'reel',    n:'Reel de anticipación del Scramble Parte 1'},
-    '2026-10-08': {t:'estreno', n:'Mike & Chacho — Scramble, Parte 1', ep:'Episodio 8', cancha:'La Providencia'},
+    '2026-10-08': {t:'estreno', e:'filmado', n:'Mike & Chacho — Scramble, Parte 1', ep:'Episodio 8', cancha:'La Providencia'},
     '2026-10-09': {t:'edicion', n:'Edición Scramble Parte 2', org:'Mike Break 43 — Pilará'},
     '2026-10-10': {t:'edicion', n:'Edición Scramble Parte 2', org:'Mike Break 43 — Pilará'},
     '2026-10-11': {t:'edicion', n:'Edición Scramble Parte 2', org:'Mike Break 43 — Pilará'},
     '2026-10-12': {t:'edicion', n:'Edición Scramble Parte 2', org:'Mike Break 43 — Pilará'},
     '2026-10-13': {t:'edicion', n:'Edición Scramble Parte 2', org:'Mike Break 43 — Pilará'},
     '2026-10-14': {t:'reel',    n:'Reel de anticipación del Scramble Parte 2'},
-    '2026-10-15': {t:'estreno', n:'Mike & Chacho — Scramble, Parte 2', ep:'Episodio 9', cancha:'La Providencia'},
+    '2026-10-15': {t:'estreno', e:'filmado', n:'Mike & Chacho — Scramble, Parte 2', ep:'Episodio 9', cancha:'La Providencia'},
     '2026-10-16': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Mike vs Maggie — Pilará'},
     '2026-10-17': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Mike vs Maggie — Pilará'},
     '2026-10-18': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Mike vs Maggie — Pilará'},
     '2026-10-19': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Mike vs Maggie — Pilará'},
     '2026-10-20': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Mike vs Maggie — Pilará'},
     '2026-10-21': {t:'reel',    n:'Reel de anticipación de Mike Break 43 — Pilará'},
-    '2026-10-22': {t:'estreno', n:'Mike Break 43 — Pilará', ep:'Episodio 10', cancha:'Pilará', alerta:'Todavía no hay fecha de grabación para este episodio.'},
+    '2026-10-22': {t:'estreno', e:'porfilmar', n:'Mike Break 43 — Pilará', ep:'Episodio 10', cancha:'Pilará', alerta:'Todavía no hay fecha de grabación para este episodio.'},
     '2026-10-23': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-24': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-26': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-27': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-28': {t:'reel',    n:'Reel de anticipación de Mike vs Maggie'},
-    '2026-10-29': {t:'estreno', n:'Mike vs Maggie Simmer', ep:'Episodio 11', cancha:'Pilará', alerta:'La invitada figura "en duda" y falta conseguir el contacto.'}
+    '2026-10-29': {t:'estreno', e:'porfilmar', n:'Mike vs Maggie Simmer', ep:'Episodio 11', cancha:'Pilará', alerta:'La invitada figura "en duda" y falta conseguir el contacto.'}
   };
 
   var TAREAS = {
@@ -1035,6 +1064,7 @@ Instagram: @elbogeyclub</div>
       var ev=DIAS[key];
       var t=ev?ev.t:'libre';
       var cls='cal-d t-'+t;
+      if (ev && ev.e) cls+=' e-'+ev.e;
       if (key < hoy) cls+=' pasado';
       if (key === hoy) cls+=' hoy';
       if (key === diaSel) cls+=' sel';
@@ -1067,7 +1097,9 @@ Instagram: @elbogeyclub</div>
           '</div>';
 
     var meta=[];
+    var EST={editado:'Filmado y editado', filmado:'Filmado, sin editar', porfilmar:'Por filmar'};
     if (ev && ev.ep) meta.push('<b>'+ev.ep+'</b>');
+    if (ev && ev.e) meta.push('<span class="est est-'+ev.e+'">'+EST[ev.e]+'</span>');
     if (ev && ev.cancha) meta.push(ev.cancha);
     if (t === 'estreno') meta.push('17:00 Buenos Aires · 16:00 Miami');
     if (ev && ev.org) meta.push('En paralelo se organiza: '+ev.org);
@@ -1075,7 +1107,11 @@ Instagram: @elbogeyclub</div>
     if (ev && ev.nota) h+='<p class="det-nota">'+ev.nota+'</p>';
     if (ev && ev.alerta) h+='<div class="box hot" style="margin:12px 0"><p style="margin:0">'+ev.alerta+'</p></div>';
 
-    var lista=TAREAS[t]||[];
+    var lista=(TAREAS[t]||[]).slice();
+    if (t === 'estreno' && ev){
+      if (ev.e === 'porfilmar') lista.unshift('Todavía no está filmado. Sin grabación agendada este estreno no existe: definir la fecha primero');
+      else if (ev.e === 'filmado') lista.unshift('Terminar la edición y exportar — el episodio todavía está en amarillo');
+    }
     h+='<h3>Qué hace falta para este día</h3><ul class="chk">';
     lista.forEach(function(txt,i){
       var id='d-'+key+'-'+i;
