@@ -175,17 +175,18 @@
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="n">501</div><div class="l">subs en YouTube</div></div>
-  <div class="stat"><div class="n">1.308</div><div class="l">seguidores en IG</div></div>
-  <div class="stat"><div class="n">4,6 K</div><div class="l">vistas del Ep.1</div></div>
-  <div class="stat"><div class="n hot" id="s1">—</div><div class="l">al Ep.2</div></div>
-  <div class="stat"><div class="n">6</div><div class="l">episodios filmados sin publicar</div></div>
+  <div class="stat"><div class="n" id="m-subs">501</div><div class="l">subs en YouTube</div></div>
+  <div class="stat"><div class="n" id="m-views">4,6 K</div><div class="l">vistas totales del canal</div></div>
+  <div class="stat"><div class="n" id="m-ig">1.308</div><div class="l">seguidores en Instagram</div></div>
+  <div class="stat"><div class="n hot" id="s1">—</div><div class="l">al próximo estreno</div></div>
+  <div class="stat"><div class="n" id="m-eps">1</div><div class="l">episodios al aire</div></div>
 </div>
 
 <nav>
   <button class="on" data-t="hoy">Hoy</button>
   <button data-t="cal">Calendario</button>
   <button data-t="eps">Episodios</button>
+  <button data-t="inv">Invitados</button>
   <button data-t="prod">Producción</button>
   <button data-t="marca">Marca y copys</button>
   <button data-t="cont">Contactos</button>
@@ -194,97 +195,79 @@
 <!-- ============================== HOY ============================== -->
 <section id="hoy" class="on">
 
-  <div class="box go">
-    <h4>El lanzamiento salió bien</h4>
-    <p>El Ep.1 se publicó el jueves 20 de agosto a las 17hs, como estaba planeado, y en cuatro días juntó
-    <b>4.600 vistas</b>. El canal pasó de <b>11 a 501 suscriptores</b> e Instagram de <b>15 a 1.308 seguidores</b>.
-    La secuencia de lanzamiento se ejecutó completa: pieza de marca, placa con la fecha, reel de Mike y el video de bienvenida.</p>
-    <p style="margin-bottom:0">Para un canal que arrancó de cero, esos números son una señal buena. La pregunta ahora ya no es cómo lanzar: es cómo no perder el envión.</p>
+  <div class="box hot">
+    <h4>Esta semana sale el Ep.2</h4>
+    <p><b>Miércoles 26:</b> teaser del fitting en Instagram. <b>Jueves 27:</b> el episodio del fitting al aire.
+    Eso adelanta el Ep.2 respecto del plan original de 14 días — bien, porque el canal viene con envión y catorce días de silencio lo apagaban.</p>
+    <p style="margin-bottom:0">Lo que queda por cerrar es la edición del fitting a tiempo y el teaser para mañana.</p>
   </div>
 
-  <div class="box hot">
-    <h4>El riesgo de esta semana es el silencio</h4>
-    <p>Entre el Ep.1 y el Ep.2 hay catorce días. Para un canal con audiencia hecha eso está bien; para uno que debutó hace cuatro días
-    y todavía está enseñándole al algoritmo a quién mostrarle las cosas, es un hueco largo. La gente que se suscribió el jueves
-    todavía no vio un segundo video, y sin un segundo video no hay hábito.</p>
-    <p style="margin-bottom:0"><b>El Ep.2 ya está editado.</b> Vale discutir si conviene adelantarlo a este jueves 27 en vez de esperar al 3 de septiembre,
-    y recién después estabilizar la cadencia quincenal.</p>
+  <div class="box go">
+    <h4>Cómo viene el canal</h4>
+    <p>El Ep.1 salió el jueves 20 y en cuatro días juntó <b>4.600 vistas</b>. El canal pasó de 11 a <b>501 suscriptores</b>
+    e Instagram de 15 a <b>1.308 seguidores</b>.</p>
+    <p style="margin-bottom:0">Dato útil que salió de la reunión: compartirlo el viernes generó un pico de fin de semana — de 2.500 vistas el viernes
+    a 4.500 el domingo. El jueves como día de estreno funciona, y el empujón del viernes también.</p>
   </div>
 
   <h2>Semana del 24 al 30 de agosto</h2>
   <ul class="chk">
-    <li><input type="checkbox" id="w1"><label for="w1"><span class="p op">Decisión</span> Definir si el Ep.2 sale el <b>jue 27</b> o el <b>jue 3 de septiembre</b> — todo lo demás de la semana depende de esto</label></li>
-    <li><input type="checkbox" id="w2"><label for="w2"><span class="p yt">Short</span> <b>Lun 24</b> — clip vertical del Ep.1 con link al video completo</label></li>
-    <li><input type="checkbox" id="w3"><label for="w3"><span class="p ig">Reel</span> <b>Mié 26</b> — el mejor momento del Ep.1 que todavía no se usó</label></li>
-    <li><input type="checkbox" id="w4"><label for="w4"><span class="p ig">Carrusel</span> <b>Jue 27</b> — los 9 hoyos de Pilar: portada con cancha y fecha, un slide por hoyo</label></li>
-    <li><input type="checkbox" id="w5"><label for="w5"><span class="p ig">Reel</span> <b>Dom 30</b> — teaser del Ep.2: "¿cuánto pierde tu palo?"</label></li>
-    <li><input type="checkbox" id="w6"><label for="w6"><span class="p op">Post</span> Leer y contestar todos los comentarios del Ep.1 — con 4.600 vistas hay conversación para aprovechar</label></li>
-    <li><input type="checkbox" id="w7"><label for="w7"><span class="p op">Edición</span> Meter el Ep.3 en edición para recuperar el colchón de tres episodios</label></li>
-    <li><input type="checkbox" id="w8"><label for="w8"><span class="p op">Rodaje</span> Confirmar si el rodaje del 21 se hizo y descargar el material</label></li>
+    <li><input type="checkbox" id="w1"><label for="w1"><span class="p op">Edición</span> Terminar el video del fitting para que salga el jueves</label></li>
+    <li><input type="checkbox" id="w2"><label for="w2"><span class="p ig">Teaser</span> <b>Mié 26</b> — teaser del fitting listo y publicado</label></li>
+    <li><input type="checkbox" id="w3"><label for="w3"><span class="p op">Drive</span> Subir la versión <b>genérica</b> del video (sin música ni gráfica) para poder cortar clips sin que se vean los cortes de edición</label></li>
+    <li><input type="checkbox" id="w4"><label for="w4"><span class="p op">Drive</span> Subir los archivos de música, así se puede terminar de editar sin depender del proyecto original</label></li>
+    <li><input type="checkbox" id="w5"><label for="w5"><span class="p yt">YT</span> <b>Jue 27, 17:00</b> — Ep.2: el fitting al aire</label></li>
+    <li><input type="checkbox" id="w6"><label for="w6"><span class="p st">TikTok</span> Abrir y activar la cuenta de TikTok y empezar a subir clips cortos</label></li>
+    <li><input type="checkbox" id="w7"><label for="w7"><span class="p ig">Clips</span> Arrancar la edición del primer clip del video con Pipe</label></li>
+    <li><input type="checkbox" id="w8"><label for="w8"><span class="p op">Rodaje</span> Confirmar la grabación de la semana que viene en el Pro Shop de Horacio</label></li>
+    <li><input type="checkbox" id="w9"><label for="w9"><span class="p op">Invitados</span> Contactar a Tina Gómez Cisterna por disponibilidad del 1 y 2 de septiembre</label></li>
+    <li><input type="checkbox" id="w10"><label for="w10"><span class="p op">Invitados</span> Conseguir el contacto de Maggie y proponerle una fecha de septiembre</label></li>
+    <li><input type="checkbox" id="w11"><label for="w11"><span class="p op">Invitados</span> Escribirle a Samer de Yarda51 para armar la grabación en el simulador</label></li>
+    <li><input type="checkbox" id="w12"><label for="w12"><span class="p op">Edición</span> Evaluar tercerizar la edición de 3 o 4 capítulos para armar el colchón</label></li>
+    <li><input type="checkbox" id="w13"><label for="w13"><span class="p op">Post</span> Contestar los comentarios del Ep.1 — con 4.600 vistas hay conversación para aprovechar</label></li>
   </ul>
 
-  <h2>Qué mirar del Ep.1 antes de armar el Ep.2</h2>
-  <p class="lede">Los datos del primer video son la única información real que tenemos sobre esta audiencia. Vale media hora leerlos.</p>
+  <h2>Decisiones abiertas</h2>
   <div class="cols">
     <div class="card">
-      <h4>Retención</h4>
-      <ul>
-        <li>¿Dónde se cae la curva? Ese minuto es lo que hay que cortar en el próximo</li>
-        <li>¿Cuánto dura el pico inicial? Dice si el hook funciona</li>
-        <li>Un video de 38 minutos con retención baja al inicio pide episodios más cortos</li>
-      </ul>
+      <h4>Cadencia: ¿quincenal o semanal?</h4>
+      <p style="margin:0;font-size:13.5px">La idea es alternar un episodio de Mike solo con uno de Mike + invitado, todos los jueves.
+      A corto plazo se sostiene cada 15 días mientras se ordena el flujo, con la meta de pasar a semanal. Lo que define si se puede es el colchón de editados.</p>
     </div>
     <div class="card">
-      <h4>Origen del tráfico</h4>
-      <ul>
-        <li>¿Cuánto vino de Instagram y cuánto de YouTube mismo?</li>
-        <li>Si casi todo vino de afuera, el algoritmo todavía no lo está empujando solo</li>
-        <li>Eso define cuánto peso sigue teniendo Instagram</li>
-      </ul>
+      <h4>Qué sale después del fitting</h4>
+      <p style="margin:0;font-size:13.5px">Se planteó que el video de Romanato conviene más adelante y no como tercero,
+      para aprovechar el envión del lanzamiento con algo más fuerte. Un video con Pipe aparece como mejor candidato.</p>
     </div>
     <div class="card">
-      <h4>Miniatura y título</h4>
-      <ul>
-        <li>El CTR dice si la miniatura funciona</li>
-        <li>Si es bajo con buena retención, el problema es la portada, no el video</li>
-        <li>Se puede cambiar la miniatura de un video ya publicado</li>
-      </ul>
+      <h4>Tercerizar edición</h4>
+      <p style="margin:0;font-size:13.5px">Hay unos 5 capítulos de 9 hoyos filmados sin editar. Mandar 3 o 4 afuera es lo que compra la cadencia semanal.
+      Sin eso, la edición sigue siendo el techo del canal.</p>
     </div>
     <div class="card">
-      <h4>Comentarios</h4>
-      <ul>
-        <li>Qué momento cita la gente: eso es lo que hay que repetir</li>
-        <li>Qué piden: candidatos a episodio futuro</li>
-        <li>Contestar todo en los primeros días ayuda a la distribución</li>
-      </ul>
+      <h4>Acuerdos con canchas</h4>
+      <p style="margin:0;font-size:13.5px">Explorar acuerdos con Pilar, Estancias o Areco para tener acceso regular y permiso de grabación.
+      También proponerle a la Asociación Argentina de Golf grabar en sedes de torneo la semana previa, como se hace en Estados Unidos.</p>
     </div>
   </div>
 
-  <h2>Pendientes</h2>
+  <h2>Pendientes de fondo</h2>
   <div class="cols">
     <div class="card">
-      <h4>El colchón quedó corto</h4>
-      <p style="margin:0;font-size:13.5px">La regla era tener tres episodios editados por delante. Con el Ep.1 publicado queda solo el Ep.2. El Ep.3 tendría que entrar en edición ya.</p>
+      <h4>El colchón está corto</h4>
+      <p style="margin:0;font-size:13.5px">La regla era tener tres episodios editados por delante. Con el Ep.1 publicado y el Ep.2 saliendo el jueves, el colchón queda en cero.</p>
     </div>
     <div class="card">
-      <h4>TikTok sigue sin abrir</h4>
-      <p style="margin:0;font-size:13.5px">Con 1.300 seguidores en Instagram y material de sobra, el laboratorio de volumen tiene más sentido ahora que antes del lanzamiento. Como mínimo, reservar el handle.</p>
+      <h4>TikTok sin activar</h4>
+      <p style="margin:0;font-size:13.5px">La cuenta existe pero no tiene contenido. Con 1.300 seguidores en Instagram y material de sobra, es la palanca más barata que queda sin usar.</p>
     </div>
     <div class="card">
       <h4>Playlists en YouTube</h4>
-      <p style="margin:0;font-size:13.5px">Con un video no hacía falta. Con el segundo sí: una playlist de episodios hace que uno lleve al otro solo.</p>
-    </div>
-    <div class="card">
-      <h4>Links de Drive y Frame.io</h4>
-      <p style="margin:0;font-size:13.5px">El pipeline tiene el qué y el cuándo. Falta el dónde vive cada archivo, que era el action item original del calendario.</p>
+      <p style="margin:0;font-size:13.5px">Con dos videos ya tiene sentido: una playlist de episodios hace que uno lleve al otro solo.</p>
     </div>
     <div class="card">
       <h4>El escudo impreso sin el nombre</h4>
       <p style="margin:0;font-size:13.5px">En la próxima impresión de banderitas, "El Bogey Club" a cada lado. Sin el nombre la foto no genera búsqueda.</p>
-    </div>
-    <div class="card">
-      <h4>Contactos sin cargar</h4>
-      <p style="margin:0;font-size:13.5px">Teléfonos y mails del equipo, y los datos de Pipe y Chacho. Están en la solapa de Contactos esperando.</p>
     </div>
   </div>
 </section>
@@ -292,111 +275,74 @@
 <!-- ============================== CALENDARIO ============================== -->
 <section id="cal">
 
+  <div class="box" id="feedstatus">
+    <h4>De dónde salen estos datos</h4>
+    <p style="margin-bottom:0">Esta grilla está pensada para alimentarse sola de la planilla compartida que mantiene producción.
+    Mientras la conexión no esté activa, lo que ves acá es la última versión cargada a mano.</p>
+  </div>
+
   <h2>Reglas del calendario</h2>
   <div class="cols">
     <div class="card">
       <h4>Cadencia</h4>
-      <ul><li>1 video de YouTube cada 2 semanas</li><li>Siempre jueves</li><li>Instagram entre medio, sin huecos largos</li></ul>
+      <ul><li>Un episodio por <b>jueves</b> como objetivo</li><li>Cada 15 días mientras se ordena el flujo</li><li>Alterna: Mike solo → Mike + invitado</li></ul>
     </div>
     <div class="card">
       <h4>Horario</h4>
       <ul><li><b>17:00 Buenos Aires</b> (UTC−3)</li><li>= 16:00 Miami / Nueva York</li><li>La franja buena es 15:00–18:00</li></ul>
     </div>
     <div class="card">
-      <h4>Días</h4>
-      <ul><li>Lunes, miércoles, jueves y domingo</li><li>Jueves manda: viernes hay home office y existe el hábito de almorzar con YouTube</li></ul>
+      <h4>El empujón del viernes</h4>
+      <ul><li>Estrenar jueves, compartir fuerte el viernes</li><li>El Ep.1 pasó de 2.500 vistas el viernes a 4.500 el domingo</li><li>El fin de semana es donde se acumula</li></ul>
     </div>
     <div class="card">
       <h4>Rendimiento por episodio</h4>
-      <ul><li>Mínimo 4 reels + 1 Short por episodio largo</li><li>Con 7 episodios en backlog son ~28 reels</li></ul>
+      <ul><li>Mínimo 4 reels + 1 Short</li><li>1 carrusel de 9 hoyos</li><li>Stories el día del estreno</li></ul>
     </div>
   </div>
 
-  <h2>Agenda de rodajes</h2>
-  <p class="lede">Un rodaje al mes de 18 hoyos rinde dos episodios de 9. Con eso solo, la cadencia quincenal se sostiene.</p>
+  <h2>Grilla de estrenos</h2>
+  <p class="lede">Un jueves por fila. Los que están vacíos son los que hay que llenar desde la planilla.</p>
   <div class="scroll">
-    <table>
-      <thead><tr><th>Fecha</th><th>Qué</th><th>Cancha</th><th>Estado</th></tr></thead>
+    <table id="tbl-cal">
+      <thead><tr><th>Jueves</th><th>Episodio</th><th>Formato</th><th>Con</th><th>Estado</th></tr></thead>
       <tbody>
-        <tr class="done"><td class="d">Vie 21 Ago</td><td>Rodaje — 18 hoyos, se parte en dos episodios</td><td class="dim">Por confirmar</td><td><span class="p op">Conflicto de agenda</span></td></tr>
-        <tr><td class="d">Mié 26 Ago</td><td>Fecha alternativa que se había mencionado</td><td class="dim">—</td><td><span class="p todo">Sin definir</span></td></tr>
-        <tr><td class="d">Septiembre</td><td>Rodaje mensual — sumar un invitado nuevo</td><td class="dim">—</td><td><span class="p todo">Por agendar</span></td></tr>
-        <tr><td class="d">Octubre</td><td>Gapping y fitting en cancha</td><td class="dim">Contacto del pro shop</td><td><span class="p todo">Idea</span></td></tr>
-        <tr><td class="d">Fin de año</td><td>Sesión en Uruguay</td><td class="dim">Cantegril</td><td><span class="p todo">Explorando</span></td></tr>
+        <tr class="drop"><td class="d">20 ago</td><td><b>Ep.1 — 9 hoyos en Pilar, Break 43</b></td><td>Mike solo</td><td class="dim">—</td><td><span class="p ok">Al aire · 4,6 K</span></td></tr>
+        <tr class="drop"><td class="d">27 ago</td><td><b>Ep.2 — Fitting</b></td><td>Mike solo</td><td class="dim">—</td><td><span class="p op">En edición</span></td></tr>
+        <tr><td class="d">3 sep</td><td>Mike + Pipe — desafío de 5 tiros</td><td>Invitado</td><td>Pipe</td><td><span class="p op">Propuesto</span></td></tr>
+        <tr><td class="d">10 sep</td><td class="dim">Sin asignar</td><td class="dim">Mike solo</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">17 sep</td><td class="dim">Sin asignar</td><td class="dim">Invitado</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">24 sep</td><td class="dim">Sin asignar</td><td class="dim">Mike solo</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">1 oct</td><td class="dim">Sin asignar</td><td class="dim">Invitado</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">8 oct</td><td class="dim">Sin asignar</td><td class="dim">Mike solo</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">15 oct</td><td class="dim">Sin asignar</td><td class="dim">Invitado</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">22 oct</td><td class="dim">Sin asignar</td><td class="dim">Mike solo</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">29 oct</td><td class="dim">Sin asignar</td><td class="dim">Invitado</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">5 nov</td><td class="dim">Sin asignar</td><td class="dim">Mike solo</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">12 nov</td><td class="dim">Sin asignar</td><td class="dim">Invitado</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">19 nov</td><td class="dim">Sin asignar</td><td class="dim">Mike solo</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
+        <tr><td class="d">26 nov</td><td class="dim">Sin asignar</td><td class="dim">Invitado</td><td class="dim">—</td><td><span class="p todo">Vacío</span></td></tr>
       </tbody>
     </table>
   </div>
+
+  <h2>Agenda de rodajes</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Fecha</th><th>Qué</th><th>Dónde</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td class="d">Próx. jueves</td><td>Grabación en el pro shop</td><td>Pro Shop de Horacio</td><td><span class="p op">Confirmar</span></td></tr>
+        <tr><td class="d">1–2 sep</td><td>Vuelta con invitada</td><td class="dim">Por definir</td><td><span class="p op">Consultando disponibilidad</span></td></tr>
+        <tr><td class="d">Septiembre</td><td>Grabación en simulador — fácil de editar, bajo techo</td><td>Yarda51</td><td><span class="p op">Por coordinar</span></td></tr>
+        <tr><td class="d">Fin de año</td><td>Sesión en Uruguay</td><td>Cantegril</td><td><span class="p todo">Explorando</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="box warn">
     <h4>Dos días de edición por mes, agendados</h4>
-    <p>Sin bloques fijos de edición la cadencia quincenal se cae en la tercera semana. Van en el calendario como si fueran un rodaje.</p>
-  </div>
-
-  <h2>Calendario de publicación</h2>
-  <p class="lede">Hasta el 15 de octubre. Los jueves marcados en verde son drops de YouTube.</p>
-  <div class="scroll">
-    <table>
-      <thead><tr><th>Fecha</th><th>Canal</th><th>Contenido</th><th>Fuente</th></tr></thead>
-      <tbody>
-        <tr class="wk"><td colspan="4">Semana 0 — pre-lanzamiento · hecho</td></tr>
-        <tr class="done"><td class="d">Vie 14 Ago</td><td><span class="p ig">IG post</span></td><td>Pieza de lanzamiento — logo + presentación del canal</td><td class="dim">Arte</td></tr>
-        <tr class="done"><td class="d">Dom 16 Ago</td><td><span class="p ig">Reel</span></td><td>Clip manifiesto de Mike — "se están riendo de mí"</td><td class="dim">Filmado nuevo</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 1 — lanzamiento · hecho</td></tr>
-        <tr class="done"><td class="d">Lun 17 Ago</td><td><span class="p ig">Reel</span></td><td>Clip #2 + "faltan 3 días"</td><td class="dim">Ep.1</td></tr>
-        <tr class="done"><td class="d">Mié 19 Ago</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva + teaser del intro (15s)</td><td class="dim">Intro</td></tr>
-        <tr class="drop done"><td class="d">Jue 20 Ago</td><td><span class="p yt">YouTube</span></td><td><b>EP. 1 — ¿Podrá Mike superar su handicap en 9 hoyos de Pilar Golf?</b> · 38:08</td><td class="dim">4,6 K vistas</td></tr>
-        <tr class="drop done"><td class="d">Jue 20 Ago</td><td><span class="p ig">IG post</span></td><td>Intro actualizado + caption de anuncio + 3 stories con link</td><td class="dim">Intro</td></tr>
-        <tr class="done"><td class="d">Vie 21 Ago</td><td><span class="p op">Colab</span></td><td>Posteo de Mike en su canal personal · <b>rodaje</b></td><td class="dim">Mike</td></tr>
-        <tr class="done"><td class="d">Dom 23 Ago</td><td><span class="p ig">Reel</span></td><td>Clip #3 — "¿ya viste el episodio 1?"</td><td class="dim">Ep.1</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 2 — sostener · en curso</td></tr>
-        <tr><td class="d">Lun 24 Ago</td><td><span class="p yt">Short</span></td><td>Clip vertical del Ep.1 con link al video completo</td><td class="dim">Ep.1</td></tr>
-        <tr><td class="d">Mié 26 Ago</td><td><span class="p ig">Reel</span></td><td>Ficción "vida de golfista" #1 — despertarse 5am</td><td class="dim">Nuevo · rápido</td></tr>
-        <tr><td class="d">Jue 27 Ago</td><td><span class="p ig">Carrusel</span></td><td><b>Los 9 hoyos de Pilar</b> — portada con cancha y fecha, un slide por hoyo</td><td class="dim">Ep.1</td></tr>
-        <tr><td class="d">Dom 30 Ago</td><td><span class="p ig">Reel</span></td><td>Teaser Ep.2 — "¿cuánto pierde tu palo?"</td><td class="dim">Ep.2</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 3 — Ep.2</td></tr>
-        <tr><td class="d">Lun 31 Ago</td><td><span class="p ig">Reel</span></td><td>El número más sorprendente del fitting</td><td class="dim">Ep.2</td></tr>
-        <tr><td class="d">Mié 2 Sep</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva Ep.2</td><td class="dim">—</td></tr>
-        <tr class="drop"><td class="d">Jue 3 Sep</td><td><span class="p yt">YouTube</span></td><td><b>EP. 2 — Fitting: qué palos estás usando mal</b> · 17:00 BA<br><span class="dim">Decisión abierta: se puede adelantar al jue 27 de agosto para no dejar 14 días de silencio</span></td><td class="dim">Editado</td></tr>
-        <tr><td class="d">Dom 6 Sep</td><td><span class="p ig">Reel</span></td><td>Clip del Ep.2 + CTA a YouTube</td><td class="dim">Ep.2</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 4 — sostener</td></tr>
-        <tr><td class="d">Lun 7 Sep</td><td><span class="p yt">Short</span></td><td>Vertical del Ep.2</td><td class="dim">Ep.2</td></tr>
-        <tr><td class="d">Mié 9 Sep</td><td><span class="p ig">Reel</span></td><td>Ficción "vida de golfista" #2</td><td class="dim">Nuevo · rápido</td></tr>
-        <tr><td class="d">Jue 10 Sep</td><td><span class="p ig">Post</span></td><td>Se abre el <b>reto de la banderita</b> a la audiencia</td><td class="dim">Destacada</td></tr>
-        <tr><td class="d">Dom 13 Sep</td><td><span class="p ig">Reel</span></td><td>Teaser Ep.3 — desafío de 5 tiros con Pipe</td><td class="dim">Ep.3</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 5 — Ep.3</td></tr>
-        <tr><td class="d">Lun 14 Sep</td><td><span class="p ig">Reel</span></td><td>Presentación de Pipe — el peor tiro del día</td><td class="dim">Ep.3</td></tr>
-        <tr><td class="d">Mié 16 Sep</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva</td><td class="dim">—</td></tr>
-        <tr class="drop"><td class="d">Jue 17 Sep</td><td><span class="p yt">YouTube</span></td><td><b>EP. 3 — Mike + Pipe: desafío de 5 tiros (parte 1)</b> · 17:00 BA</td><td class="dim">A editar</td></tr>
-        <tr><td class="d">Dom 20 Sep</td><td><span class="p ig">Reel</span></td><td>Clip del Ep.3</td><td class="dim">Ep.3</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 6 — sostener</td></tr>
-        <tr><td class="d">Lun 21 Sep</td><td><span class="p yt">Short</span></td><td>Vertical del Ep.3</td><td class="dim">Ep.3</td></tr>
-        <tr><td class="d">Mié 23 Sep</td><td><span class="p ig">Reel</span></td><td>Ficción "vida de golfista" #3</td><td class="dim">Nuevo · rápido</td></tr>
-        <tr><td class="d">Jue 24 Sep</td><td><span class="p ig">Reel</span></td><td>Clip del Ep.3 + encuesta en stories</td><td class="dim">Ep.3</td></tr>
-        <tr><td class="d">Dom 27 Sep</td><td><span class="p ig">Reel</span></td><td>Teaser Ep.4</td><td class="dim">Ep.4</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 7 — Ep.4</td></tr>
-        <tr><td class="d">Lun 28 Sep</td><td><span class="p ig">Reel</span></td><td>Clip de humor</td><td class="dim">Ep.4</td></tr>
-        <tr><td class="d">Mié 30 Sep</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva</td><td class="dim">—</td></tr>
-        <tr class="drop"><td class="d">Jue 1 Oct</td><td><span class="p yt">YouTube</span></td><td><b>EP. 4 — Mike + Pipe: desafío de 5 tiros (parte 2)</b> · 17:00 BA</td><td class="dim">A editar</td></tr>
-        <tr><td class="d">Dom 4 Oct</td><td><span class="p ig">Reel</span></td><td>Clip del Ep.4</td><td class="dim">Ep.4</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 8 — sostener</td></tr>
-        <tr><td class="d">Lun 5 Oct</td><td><span class="p yt">Short</span></td><td>Vertical del Ep.4</td><td class="dim">Ep.4</td></tr>
-        <tr><td class="d">Mié 7 Oct</td><td><span class="p ig">Reel</span></td><td>Ficción "vida de golfista" #4</td><td class="dim">Nuevo · rápido</td></tr>
-        <tr><td class="d">Jue 8 Oct</td><td><span class="p ig">Post</span></td><td>Recap de las fotos del reto de la banderita</td><td class="dim">Comunidad</td></tr>
-        <tr><td class="d">Dom 11 Oct</td><td><span class="p ig">Reel</span></td><td>Teaser Ep.5 — la ruleta</td><td class="dim">Ep.5</td></tr>
-
-        <tr class="wk"><td colspan="4">Semana 9 — Ep.5</td></tr>
-        <tr><td class="d">Lun 12 Oct</td><td><span class="p ig">Reel</span></td><td>Clip de la ruleta</td><td class="dim">Ep.5</td></tr>
-        <tr><td class="d">Mié 14 Oct</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva</td><td class="dim">—</td></tr>
-        <tr class="drop"><td class="d">Jue 15 Oct</td><td><span class="p yt">YouTube</span></td><td><b>EP. 5 — Pilar hoyos nuevos: desafíos con ruleta</b> · 17:00 BA</td><td class="dim">A editar</td></tr>
-      </tbody>
-    </table>
+    <p>Sin bloques fijos de edición la cadencia semanal no existe. Van en el calendario como si fueran un rodaje.
+    Y si se terceriza la edición de 3 o 4 capítulos, el colchón se recupera de una.</p>
   </div>
 </section>
 
@@ -490,26 +436,91 @@
     </div>
   </div>
 
-  <h2>Banco de ideas</h2>
+  <h2>Formatos en el banco</h2>
+  <p class="lede">Salieron de la reunión del 24 de agosto. Son las ideas que hay para llenar la grilla de jueves.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Formato</th><th>Cómo funciona</th><th>Por qué puede andar</th></tr></thead>
+      <tbody>
+        <tr><td><b>Break 80</b></td><td>Segmento recurrente: Mike intenta bajar de 80, cada episodio con un profe o coach distinto</td><td>Objetivo declarado + cara nueva cada vez. Es una serie dentro de la serie</td></tr>
+        <tr><td><b>Quiz de reglas / mulligan</b></td><td>Cada hoyo introduce una regla de golf. Si Mike contesta bien una pregunta difícil, se gana un mulligan</td><td>Mete tensión en hoyos que si no serían de relleno, y enseña sin dar clase</td></tr>
+        <tr><td><b>Scramble con invitados</b></td><td>Ya se usó con Chacho. Empareja el nivel y deja jugar el contraste</td><td>Baja la presión sobre el invitado y sube la conversación</td></tr>
+        <tr><td><b>Alternate shot con un pro</b></td><td>Mike y un profesional juegan golpes alternados intentando hacer par en cada hoyo</td><td>La diferencia de nivel es el chiste: el pro deja una bola perfecta y Mike la arruina</td></tr>
+        <tr><td><b>Producción contra Mike</b></td><td>Mati + Mike contra Joaco + Ricardo. Serie interna del equipo</td><td>Presenta al resto del equipo sin que se sienta forzado</td></tr>
+        <tr><td><b>GONDET</b></td><td>Match play rotativo: Mike contra cada integrante del equipo, por turnos</td><td>Formato de campeonato, genera continuidad entre episodios</td></tr>
+        <tr><td><b>Desafío de la comunidad</b></td><td>Se invita a un seguidor que desafíe a Mike en los comentarios a jugar una vuelta</td><td>Convierte comentarios en contenido y le da razón a la gente para comentar</td></tr>
+        <tr><td><b>Gapping y fitting en cancha</b></td><td>Medir los palos y explicar qué hace cada uno, en el campo</td><td>Los episodios instructivos son los más escuchados del podcast Pro Shop</td></tr>
+        <tr><td><b>Vida de golfista</b></td><td>Sketches cortos de ficción, se filman en 20 minutos con celular</td><td>Relleno social barato que mantiene vivo Instagram entre episodios</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+<!-- ============================== INVITADOS ============================== -->
+<section id="inv">
+
+  <div class="box">
+    <h4>Cómo se usa esta lista</h4>
+    <p style="margin-bottom:0">Acá viven los nombres, por qué interesan y en qué estado está cada conversación.
+    <b>Los datos de contacto quedan en la planilla, no acá</b> — esta página es de acceso abierto para el equipo y no corresponde publicar
+    teléfonos ni mails de gente que todavía no dijo que sí.</p>
+  </div>
+
+  <h2>Pipeline de invitados</h2>
+  <div class="scroll">
+    <table id="tbl-inv">
+      <thead><tr><th>Quién</th><th>Por qué</th><th>Fecha</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td><b>Pipe</b></td><td>Personaje recurrente. Juega bastante mejor que Mike y ese contraste es el motor del formato — funciona como némesis</td><td class="dim">Material filmado</td><td><span class="p ok">Elenco fijo</span></td></tr>
+        <tr><td><b>Chacho</b></td><td>Recurrente. Scramble en Providencia, 18 hoyos filmados</td><td class="dim">Material filmado</td><td><span class="p ok">Elenco fijo</span></td></tr>
+        <tr><td><b>Tina Gómez Cisterna</b></td><td>Amateur, alrededor del puesto 92 del mundo, con 8 victorias. Abre el elenco y suma nivel real</td><td>1–2 sep</td><td><span class="p op">Consultando disponibilidad</span></td></tr>
+        <tr><td><b>Maggie</b></td><td>Recomendada dentro del equipo</td><td>Septiembre</td><td><span class="p op">Falta el contacto</span></td></tr>
+        <tr><td><b>Samer</b> — Yarda51</td><td>Instructor y co-dueño del simulador. Además es el puente hacia futbolistas</td><td>Septiembre</td><td><span class="p op">Por coordinar</span></td></tr>
+        <tr><td><b>Leandro González Pires</b></td><td>Futbolista. Se llega por Samer</td><td class="dim">—</td><td><span class="p todo">Idea</span></td></tr>
+        <tr><td><b>Manuel Lanzini</b></td><td>Futbolista. Se llega por Samer</td><td class="dim">—</td><td><span class="p todo">Idea</span></td></tr>
+        <tr><td><b>Tommy Bianchi</b></td><td>Cara del golf argentino en Instagram. Audiencia muy afín</td><td class="dim">—</td><td><span class="p todo">Sin contactar</span></td></tr>
+        <tr><td><b>Jorgito Fernández Valdés</b></td><td>Golfista profesional. Ya fue invitado a jugar con el equipo</td><td class="dim">Sin confirmar</td><td><span class="p op">Invitado</span></td></tr>
+        <tr><td><b>Emiliano Grillo</b></td><td>Va a estar en Buenos Aires. Es el episodio más escuchado del podcast Pro Shop, o sea que la audiencia lo pide</td><td class="dim">—</td><td><span class="p todo">Oportunidad</span></td></tr>
+        <tr><td><b>Horacio</b> — pro shop</td><td>Grabación en el local</td><td>Próximo jueves</td><td><span class="p op">Confirmar</span></td></tr>
+        <tr><td><b>Romanato</b></td><td>Gapping y fitting en cancha. Se planteó dejarlo para más adelante y no como tercer episodio</td><td class="dim">Más adelante</td><td><span class="p op">Reprogramado</span></td></tr>
+        <tr><td><b>Santi Garat</b></td><td>Profesor de putt. Segundo episodio más escuchado del Pro Shop</td><td class="dim">—</td><td><span class="p todo">Idea</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Alianzas a construir</h2>
   <div class="cols">
     <div class="card">
-      <h4>Con producción propia</h4>
+      <h4>Canchas</h4>
       <ul>
-        <li>Gapping y fitting en cancha — sugerido por el contacto del pro shop</li>
-        <li>Clase con un profesional: el podcast Pro Shop tiene como episodios más escuchados los de Emiliano Grillo y Santi Garat, señal de que lo instructivo pega</li>
-        <li>Simulador en Yarda 51 con un profe</li>
-        <li>Clínica de putt</li>
-        <li>Invitada mujer — abrir el elenco</li>
-        <li>Sesión en Uruguay a fin de año</li>
+        <li>Acuerdos con Pilar, Estancias o Areco</li>
+        <li>Acceso regular y permiso de grabación</li>
+        <li>Baja el costo y la fricción de cada rodaje</li>
       </ul>
     </div>
     <div class="card">
-      <h4>Rápidas, para relleno social</h4>
+      <h4>Asociación Argentina de Golf</h4>
       <ul>
-        <li>Serie de ficción "vida de golfista": sketches cortos de slice-of-life, se filman en 20 minutos con celular</li>
-        <li>Reto de la banderita: fotos con la bandera de marca en canchas del mundo, primero el equipo y después la audiencia</li>
-        <li>"El peor tiro de la semana" como formato recurrente</li>
-        <li>Reacciones a los comentarios del canal</li>
+        <li>Grabar en sedes de torneo la semana previa</li>
+        <li>Es práctica común en el golf de YouTube en Estados Unidos</li>
+        <li>Da acceso a canchas que de otro modo no se consiguen</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Podcast Pro Shop</h4>
+      <ul>
+        <li>Ya promocionaron el canal en su episodio 200</li>
+        <li>Audiencia de golf ya calentada</li>
+        <li>Sus episodios top son los instructivos: eso valida el formato con profes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Comunidad</h4>
+      <ul>
+        <li>Invitar a un seguidor que desafíe a Mike en los comentarios</li>
+        <li>Reto de la banderita en canchas del mundo</li>
+        <li>Convierte audiencia en participantes</li>
       </ul>
     </div>
   </div>
@@ -537,10 +548,15 @@
   <p>La edición de los episodios largos es lo que más tiempo come y lo que sostiene la cadencia quincenal.
   Todo lo que el equipo pueda resolver alrededor — marcar clips, revisar cortes, llevar los pedidos de social ya masticados — es tiempo que vuelve directo a los videos largos.</p>
 
-  <h3>4 · Días fijos de edición</h3>
+  <h3>4 · El corte genérico</h3>
+  <p>De cada episodio se sube a Drive una <b>versión genérica</b>: sin música y sin gráfica.
+  Con eso se pueden cortar clips para Shorts y reels sin que se vean los cortes de edición ni la placa de turno encima.
+  Los archivos de música van a Drive por separado, así quien arma los clips no depende del proyecto original para terminar.</p>
+
+  <h3>5 · Días fijos de edición</h3>
   <p>Dos días de edición dedicados por mes, agendados como si fueran un rodaje.</p>
 
-  <h3>5 · Crecer más allá de la comunidad de Mike</h3>
+  <h3>6 · Crecer más allá de la comunidad de Mike</h3>
   <p>La comunidad de Mike es un empujón real y hay que usarla, pero no puede ser la única vía. Si todo el tráfico entra por ahí,
   el canal queda atado a una sola puerta y su propio algoritmo nunca aprende a distribuirlo.
   En paralelo: la comunidad del pro shop, el podcast, colaboraciones con otros jugadores, el reto de la banderita y volumen propio en Instagram y TikTok.</p>
@@ -762,32 +778,6 @@ Instagram: @elbogeyclub</div>
     </table>
   </div>
 
-  <h2>Elenco e invitados</h2>
-  <div class="scroll">
-    <table>
-      <thead><tr><th>Nombre</th><th>Aparece en</th><th>Contacto</th></tr></thead>
-      <tbody>
-        <tr><td><b>Pipe</b></td><td>Desafío de 5 tiros (Ep.3 y 4), ruleta en Pilar (Ep.5)</td><td class="dim">Cargar</td></tr>
-        <tr><td><b>Chacho</b></td><td>Scramble en Providencia (Ep.6 y 7)</td><td class="dim">Cargar</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2>Aliados y contactos externos</h2>
-  <div class="scroll">
-    <table>
-      <thead><tr><th>Quién</th><th>Por qué importa</th><th>Estado</th></tr></thead>
-      <tbody>
-        <tr><td><b>Podcast Pro Shop</b></td><td>Ya promocionaron el canal en su episodio 200 con Pipe y Chacho. Audiencia de golf ya calentada</td><td><span class="p ok">Relación activa</span></td></tr>
-        <tr><td><b>Romanato</b> — pro shop</td><td>Propuso volver a hacer el gapping. Posible episodio de gapping y fitting en cancha</td><td><span class="p op">Pendiente de agendar</span></td></tr>
-        <tr><td><b>Santi Garat</b> — profe de putt</td><td>Uno de los episodios más escuchados del Pro Shop. Candidato para la clase con un profesional</td><td><span class="p todo">Idea</span></td></tr>
-        <tr><td><b>Yarda 51</b></td><td>Simulador — sede posible para una clase o un desafío bajo techo</td><td><span class="p todo">Idea</span></td></tr>
-        <tr><td><b>Lucho</b> — productor ejecutivo, Metanoia</td><td>Su primo está entre los dos primeros del ranking uruguayo. Puerta de entrada para la sesión en Uruguay</td><td><span class="p op">Explorando</span></td></tr>
-        <tr><td><b>Cantegril</b></td><td>Cancha candidata para el rodaje de fin de año en Uruguay</td><td><span class="p todo">Idea</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
   <h2>Cuentas y herramientas</h2>
   <div class="scroll">
     <table>
@@ -795,19 +785,22 @@ Instagram: @elbogeyclub</div>
       <tbody>
         <tr><td><b>YouTube</b></td><td><a href="https://www.youtube.com/@ElBogeyClub" target="_blank" rel="noopener">@ElBogeyClub</a></td><td>El destino. Drops quincenales los jueves 17hs</td></tr>
         <tr><td><b>Instagram</b></td><td><a href="https://www.instagram.com/elbogeyclub/" target="_blank" rel="noopener">@elbogeyclub</a></td><td>Comedia y tráfico hacia YouTube</td></tr>
-        <tr><td><b>TikTok</b></td><td class="dim">Sin abrir</td><td>Laboratorio de volumen. Conviene reservar el handle</td></tr>
+        <tr><td><b>TikTok</b></td><td class="dim">Cuenta creada, sin contenido</td><td>Laboratorio de volumen. Falta activarla y empezar a subir clips</td></tr>
         <tr><td><b>Frame.io</b></td><td class="dim">Cargar link</td><td>Revisión de cortes y marcado de timecodes</td></tr>
         <tr><td><b>Google Drive</b></td><td class="dim">Cargar link</td><td>Material bruto y entregables por episodio</td></tr>
         <tr><td><b>Plex — biblioteca EBC</b></td><td class="dim">Servidor propio</td><td>Masters editados</td></tr>
         <tr><td><b>Notion</b></td><td class="dim">Espacio de Ricardo</td><td>Grabación y notas de reuniones</td></tr>
+        <tr><td><b>Planilla de calendario</b></td><td class="dim">Drive de El Bogey Club</td><td>Fuente de la grilla de estrenos. La mantiene producción</td></tr>
+        <tr><td><b>Planilla de invitados</b></td><td class="dim">Drive de El Bogey Club</td><td>Estado, notas y datos de contacto de cada invitado</td></tr>
+        <tr><td><b>Perfil de Chrome "Bogey Club"</b></td><td class="dim">Local</td><td>Tiene los marcadores de todas las cuentas de redes ya configurados</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="box warn">
     <h4>Lo que falta cargar</h4>
-    <p>Teléfonos y mails del equipo, los datos de Pipe y Chacho, y los links de Frame.io y de las carpetas de Drive por episodio.
-    Pasámelos y los dejo cargados acá, así el hub deja de tener huecos.</p>
+    <p>Los links de Frame.io y de las carpetas de Drive por episodio, y el permiso de lectura sobre las dos planillas
+    de producción para que la grilla de estrenos y el pipeline de invitados se actualicen solos.</p>
   </div>
 </section>
 
@@ -864,7 +857,7 @@ Instagram: @elbogeyclub</div>
     else if (n === 0) el.textContent = 'hoy';
     else el.textContent = doneTxt;
   }
-  paint(document.getElementById('s1'), '2026-09-03T17:00:00-03:00', 'ya salió');
+  paint(document.getElementById('s1'), '2026-08-27T17:00:00-03:00', 'hoy sale');
 
   /* ---------- copy buttons ---------- */
   document.querySelectorAll('[data-copy]').forEach(function(btn){
@@ -879,6 +872,106 @@ Instagram: @elbogeyclub</div>
       } else { fallback(txt, done); }
     });
   });
+
+  /* ================= capa de datos =================
+     Pegá acá las URLs CSV que Google genera al publicar cada pestaña
+     de la planilla en Archivo → Compartir → Publicar en la web → CSV.
+     Si quedan vacías, la página muestra el contenido cargado a mano. */
+  var FEEDS = {
+    calendario: '',
+    invitados:  '',
+    metricas:   ''
+  };
+
+  function parseCSV(text){
+    var rows=[], row=[], cur='', q=false;
+    for (var i=0;i<text.length;i++){
+      var c=text[i];
+      if (q){
+        if (c === '"'){ if (text[i+1] === '"'){ cur+='"'; i++; } else q=false; }
+        else cur+=c;
+      } else {
+        if (c === '"') q=true;
+        else if (c === ',') { row.push(cur); cur=''; }
+        else if (c === '\n'){ row.push(cur); rows.push(row); row=[]; cur=''; }
+        else if (c !== '\r') cur+=c;
+      }
+    }
+    if (cur.length || row.length){ row.push(cur); rows.push(row); }
+    return rows.filter(function(r){ return r.some(function(c){ return c.trim() !== ''; }); });
+  }
+
+  function esc(t){ var d=document.createElement('div'); d.textContent=t==null?'':String(t); return d.innerHTML; }
+
+  function pill(estado){
+    var e=(estado||'').toLowerCase();
+    var cls='todo';
+    if (/al aire|confirmad|listo|publicad|s[ií]$/.test(e)) cls='ok';
+    else if (/edici[oó]n|coordin|consult|invitad|propuest|confirmar|pendiente|reprogram/.test(e)) cls='op';
+    else if (/descartad|no|vac[ií]o/.test(e)) cls='todo';
+    return '<span class="p '+cls+'">'+esc(estado||'—')+'</span>';
+  }
+
+  function fillTable(id, rows, cols){
+    var tb=document.querySelector('#'+id+' tbody');
+    if (!tb || !rows || rows.length < 2) return false;
+    var head=rows[0].map(function(h){ return h.trim().toLowerCase(); });
+    var idx=cols.map(function(c){ return head.indexOf(c); });
+    if (idx.some(function(i){ return i < 0; })) return false;
+    var html=rows.slice(1).map(function(r){
+      var cells=idx.map(function(i,n){
+        var v=(r[i]||'').trim();
+        if (n === 0) return '<td class="d">'+esc(v)+'</td>';
+        if (n === idx.length-1) return '<td>'+pill(v)+'</td>';
+        return '<td>'+(v ? esc(v) : '<span class="dim">—</span>')+'</td>';
+      }).join('');
+      return '<tr>'+cells+'</tr>';
+    }).join('');
+    tb.innerHTML=html;
+    return true;
+  }
+
+  function feedNote(msg, ok){
+    var box=document.getElementById('feedstatus');
+    if (!box) return;
+    box.className='box '+(ok?'go':'');
+    box.querySelector('p').innerHTML=msg;
+  }
+
+  function loadFeeds(){
+    var pend=[];
+    if (FEEDS.calendario) pend.push(
+      fetch(FEEDS.calendario, {cache:'no-store'}).then(function(r){ return r.text(); })
+        .then(function(t){ return fillTable('tbl-cal', parseCSV(t), ['fecha','episodio','formato','con','estado']); })
+        .catch(function(){ return false; }));
+    if (FEEDS.invitados) pend.push(
+      fetch(FEEDS.invitados, {cache:'no-store'}).then(function(r){ return r.text(); })
+        .then(function(t){ return fillTable('tbl-inv', parseCSV(t), ['nombre','por que','fecha','estado']); })
+        .catch(function(){ return false; }));
+    if (FEEDS.metricas) pend.push(
+      fetch(FEEDS.metricas, {cache:'no-store'}).then(function(r){ return r.text(); })
+        .then(function(t){
+          var rows=parseCSV(t), map={};
+          rows.forEach(function(r){ if (r.length>=2) map[(r[0]||'').trim().toLowerCase()]=(r[1]||'').trim(); });
+          var set=function(id,k){ var el=document.getElementById(id); if (el && map[k]) el.textContent=map[k]; };
+          set('m-subs','subs_youtube'); set('m-views','vistas_totales');
+          set('m-ig','seguidores_instagram'); set('m-eps','episodios_al_aire');
+          return true;
+        }).catch(function(){ return false; }));
+
+    if (!pend.length){
+      feedNote('La conexión con la planilla todavía no está activa, así que esto es la última versión cargada a mano. '+
+               'Para encenderla hace falta publicar las pestañas de la planilla como CSV y pegar esas URLs en la configuración de la página.', false);
+      return;
+    }
+    Promise.all(pend).then(function(res){
+      var ok=res.filter(Boolean).length;
+      if (ok) feedNote('Conectado a la planilla de producción. Los datos se leen cada vez que abrís la página, así que siempre ves lo último que cargó producción.', true);
+      else feedNote('No pude leer la planilla. Puede que las pestañas hayan dejado de estar publicadas o que cambiaran los nombres de las columnas.', false);
+    });
+  }
+  loadFeeds();
+
   function fallback(txt, done){
     var ta = document.createElement('textarea');
     ta.value = txt; ta.setAttribute('readonly','');
