@@ -242,6 +242,9 @@
     .sem{grid-template-columns:repeat(2,1fr)}
     .sem-d{min-height:0}
   }
+  .firma{margin-left:auto;font-size:11px;font-weight:700;color:var(--green);
+    background:var(--green-w);border:1px solid var(--green-l);padding:2px 8px;border-radius:99px;
+    white-space:nowrap;align-self:center}
   .note{font-size:12.5px;color:var(--dim);margin-top:10px}
   footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
 
@@ -890,8 +893,8 @@ Instagram: @elbogeyclub</div>
 <footer>
   <b>El Bogey Club — Asistente de producción.</b>
   Horarios en hora de Buenos Aires (UTC−3): 17:00 BA = 16:00 Miami.<br>
-  Los tildes de las listas se guardan en tu propio navegador, así que cada uno ve los suyos.
-  <span id="upd"></span>
+  <span id="sync-nota"></span>
+  <span id="sync-estado"></span><span id="upd"></span>
 </footer>
 
 </div>
@@ -915,21 +918,110 @@ Instagram: @elbogeyclub</div>
   if (h && document.getElementById(h)) show(h);
 
   /* ---------- checkbox persistence (per browser) ---------- */
+  /* ================= tildes compartidos =================
+     Pegá acá la URL /exec de la aplicación web de Apps Script.
+     Mientras esté vacía, los tildes se guardan solo en este navegador. */
+  var SYNC_URL = '';
+
   var KEY = 'ebc.checks.v1';
   var saved = {};
   try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e){ saved = {}; }
+  var ESTADO = {};
+
+  function yo(){
+    try { return localStorage.getItem('ebc.yo') || ''; } catch(e){ return ''; }
+  }
+  function setYo(v){
+    try { localStorage.setItem('ebc.yo', v); } catch(e){}
+  }
+
+  function estadoDe(id){
+    if (SYNC_URL) return ESTADO[id] || null;
+    return saved[id] ? {v:true, by:''} : null;
+  }
+
+  function pintarFirma(cb){
+    var li = cb.closest('li');
+    if (!li) return;
+    var vieja = li.querySelector('.firma');
+    if (vieja) vieja.remove();
+    var st = estadoDe(cb.id);
+    if (cb.checked && st && st.by){
+      var sp = document.createElement('span');
+      sp.className = 'firma';
+      sp.textContent = st.by;
+      li.appendChild(sp);
+    }
+  }
+
+  function aplicarEstado(){
+    document.querySelectorAll('.chk input[type=checkbox]').forEach(function(cb){
+      var st = estadoDe(cb.id);
+      var v = !!(st && st.v);
+      if (cb.checked !== v) cb.checked = v;
+      pintarFirma(cb);
+    });
+  }
+
+  function guardar(id, v){
+    if (!SYNC_URL){
+      saved[id] = v;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){}
+      return;
+    }
+    var quien = yo();
+    ESTADO[id] = v ? {v:true, by:quien, at:''} : null;
+    fetch(SYNC_URL, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({id:id, v:v, by:quien})
+    }).then(function(r){ return r.json(); })
+      .then(function(d){ if (d && d.estado){ ESTADO=d.estado; aplicarEstado(); } })
+      .catch(function(){ marcarSync('sin conexión con el servidor de tildes', false); });
+  }
+
+  function traerEstado(){
+    if (!SYNC_URL) return;
+    fetch(SYNC_URL, {cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && d.estado){ ESTADO=d.estado; aplicarEstado(); marcarSync('', true); }
+      })
+      .catch(function(){ marcarSync('sin conexión con el servidor de tildes', false); });
+  }
+
+  function marcarSync(msg, ok){
+    var el=document.getElementById('sync-estado');
+    if (!el) return;
+    el.textContent = ok ? '' : msg;
+    el.style.color = ok ? '' : 'var(--coral)';
+  }
+
   function bindChecks(root){
     (root || document).querySelectorAll('.chk input[type=checkbox]').forEach(function(cb){
       if (cb.dataset.bound) return;
       cb.dataset.bound = '1';
-      if (saved[cb.id]) cb.checked = true;
+      var st = estadoDe(cb.id);
+      if (st && st.v) cb.checked = true;
+      pintarFirma(cb);
       cb.addEventListener('change', function(){
-        saved[cb.id] = cb.checked;
-        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){}
+        if (SYNC_URL && cb.checked && !yo()){
+          var n = prompt('¿Quién sos? Se muestra al lado de lo que marcás.');
+          if (n && n.trim()) setYo(n.trim());
+        }
+        guardar(cb.id, cb.checked);
+        pintarFirma(cb);
       });
     });
   }
   bindChecks(document);
+  (function(){
+    var n=document.getElementById('sync-nota');
+    if (n) n.textContent = SYNC_URL
+      ? 'Lo que uno marca lo ven todos: los tildes se guardan en la planilla del equipo y se refrescan cada 30 segundos.'
+      : 'Los tildes todavía se guardan solo en este navegador. Falta conectar el servidor compartido para que lo que marca uno lo vean todos.';
+  })();
+  if (SYNC_URL){ traerEstado(); setInterval(traerEstado, 30000); }
 
   /* ---------- countdowns ---------- */
   function daysTo(iso){
