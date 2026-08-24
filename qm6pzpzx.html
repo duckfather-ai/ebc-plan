@@ -101,6 +101,8 @@
   .wk td{background:var(--green-w)!important;font-weight:700;color:var(--green);font-size:10.5px;
          text-transform:uppercase;letter-spacing:.09em;padding:8px 14px}
   .drop td{background:#F3FAF2!important}
+  .done td{opacity:.5}
+  .done td.d::after{content:" ✓";color:var(--green)}
   .drop td.d{color:var(--coral)}
 
   /* ---------- pills ---------- */
@@ -169,15 +171,15 @@
       <h1>Asistente de producción</h1>
     </div>
   </div>
-  <div class="sub" id="sub">Todo lo que el equipo necesita para sacar el canal al aire y sostener la cadencia.</div>
+  <div class="sub" id="sub">Canal al aire desde el 20 de agosto. Todo lo que el equipo necesita para sostener la cadencia.</div>
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="n hot" id="s1">—</div><div class="l">al lanzamiento</div></div>
-  <div class="stat"><div class="n" id="s2">—</div><div class="l">al próximo rodaje</div></div>
-  <div class="stat"><div class="n">2</div><div class="l">episodios listos</div></div>
-  <div class="stat"><div class="n">7</div><div class="l">en backlog</div></div>
-  <div class="stat"><div class="n">11 / 15</div><div class="l">subs YT / seg. IG</div></div>
+  <div class="stat"><div class="n">501</div><div class="l">subs en YouTube</div></div>
+  <div class="stat"><div class="n">1.308</div><div class="l">seguidores en IG</div></div>
+  <div class="stat"><div class="n">4,6 K</div><div class="l">vistas del Ep.1</div></div>
+  <div class="stat"><div class="n hot" id="s1">—</div><div class="l">al Ep.2</div></div>
+  <div class="stat"><div class="n">6</div><div class="l">episodios filmados sin publicar</div></div>
 </div>
 
 <nav>
@@ -192,69 +194,97 @@
 <!-- ============================== HOY ============================== -->
 <section id="hoy" class="on">
 
-  <div class="box hot">
-    <h4>Lo más urgente</h4>
-    <p>Instagram está en <b>0 publicaciones</b> y el post "coming soon" quedó comprometido para el viernes 14.
-    Cada día sin postear antes del jueves es un día menos de calentamiento del algoritmo. Si solo se hace una cosa hoy, que sea esa.</p>
+  <div class="box go">
+    <h4>El lanzamiento salió bien</h4>
+    <p>El Ep.1 se publicó el jueves 20 de agosto a las 17hs, como estaba planeado, y en cuatro días juntó
+    <b>4.600 vistas</b>. El canal pasó de <b>11 a 501 suscriptores</b> e Instagram de <b>15 a 1.308 seguidores</b>.
+    La secuencia de lanzamiento se ejecutó completa: pieza de marca, placa con la fecha, reel de Mike y el video de bienvenida.</p>
+    <p style="margin-bottom:0">Para un canal que arrancó de cero, esos números son una señal buena. La pregunta ahora ya no es cómo lanzar: es cómo no perder el envión.</p>
   </div>
 
-  <h2>Viernes 14 — hoy</h2>
+  <div class="box hot">
+    <h4>El riesgo de esta semana es el silencio</h4>
+    <p>Entre el Ep.1 y el Ep.2 hay catorce días. Para un canal con audiencia hecha eso está bien; para uno que debutó hace cuatro días
+    y todavía está enseñándole al algoritmo a quién mostrarle las cosas, es un hueco largo. La gente que se suscribió el jueves
+    todavía no vio un segundo video, y sin un segundo video no hay hábito.</p>
+    <p style="margin-bottom:0"><b>El Ep.2 ya está editado.</b> Vale discutir si conviene adelantarlo a este jueves 27 en vez de esperar al 3 de septiembre,
+    y recién después estabilizar la cadencia quincenal.</p>
+  </div>
+
+  <h2>Semana del 24 al 30 de agosto</h2>
   <ul class="chk">
-    <li><input type="checkbox" id="a1"><label for="a1"><span class="p ig">IG</span> Publicar la pieza de lanzamiento con el caption de la solapa <b>Marca y copys</b></label></li>
-    <li><input type="checkbox" id="a2"><label for="a2"><span class="p op">Setup</span> Poner el link de YouTube en la bio de Instagram — hoy no hay ninguno y el caption lo promete</label></li>
-    <li><input type="checkbox" id="a3"><label for="a3"><span class="p op">Setup</span> Renombrar el canal de YouTube: dice <code>Bogey Club</code>, la marca es <b>El Bogey Club</b></label></li>
-    <li><input type="checkbox" id="a4"><label for="a4"><span class="p yt">YT</span> Subir <code>PILAR GOLF 01 – MIKE SOLO – BREAK 43</code> como programado para jue 20, 17:00 BA — no público todavía</label></li>
-    <li><input type="checkbox" id="a5"><label for="a5"><span class="p op">Setup</span> Banner del canal, foto de perfil y descripción larga en YouTube</label></li>
-    <li><input type="checkbox" id="a6"><label for="a6"><span class="p op">Setup</span> Reservar el handle de TikTok aunque no se use todavía</label></li>
+    <li><input type="checkbox" id="w1"><label for="w1"><span class="p op">Decisión</span> Definir si el Ep.2 sale el <b>jue 27</b> o el <b>jue 3 de septiembre</b> — todo lo demás de la semana depende de esto</label></li>
+    <li><input type="checkbox" id="w2"><label for="w2"><span class="p yt">Short</span> <b>Lun 24</b> — clip vertical del Ep.1 con link al video completo</label></li>
+    <li><input type="checkbox" id="w3"><label for="w3"><span class="p ig">Reel</span> <b>Mié 26</b> — el mejor momento del Ep.1 que todavía no se usó</label></li>
+    <li><input type="checkbox" id="w4"><label for="w4"><span class="p ig">Carrusel</span> <b>Jue 27</b> — los 9 hoyos de Pilar: portada con cancha y fecha, un slide por hoyo</label></li>
+    <li><input type="checkbox" id="w5"><label for="w5"><span class="p ig">Reel</span> <b>Dom 30</b> — teaser del Ep.2: "¿cuánto pierde tu palo?"</label></li>
+    <li><input type="checkbox" id="w6"><label for="w6"><span class="p op">Post</span> Leer y contestar todos los comentarios del Ep.1 — con 4.600 vistas hay conversación para aprovechar</label></li>
+    <li><input type="checkbox" id="w7"><label for="w7"><span class="p op">Edición</span> Meter el Ep.3 en edición para recuperar el colchón de tres episodios</label></li>
+    <li><input type="checkbox" id="w8"><label for="w8"><span class="p op">Rodaje</span> Confirmar si el rodaje del 21 se hizo y descargar el material</label></li>
   </ul>
 
-  <h2>Sábado 15 – domingo 16</h2>
-  <ul class="chk">
-    <li><input type="checkbox" id="b1"><label for="b1"><span class="p ig">IG</span> <b>Dom 16, 17:00</b> — Reel #1: el clip manifiesto de Mike a cámara. Cierra con logo + "Ep.1 este jueves 17hs, link en bio"</label></li>
-    <li><input type="checkbox" id="b2"><label for="b2"><span class="p op">Intro</span> Terminar el corte nuevo del intro: clips cortos de varias canchas y rondas, no solo un episodio. Cierra con logo y el marcador de objetivo</label></li>
-    <li><input type="checkbox" id="b3"><label for="b3"><span class="p op">Post</span> Cargar el intro nuevo como trailer del canal en YouTube</label></li>
-  </ul>
-
-  <h2>Semana de lanzamiento (17 – 23)</h2>
-  <ul class="chk">
-    <li><input type="checkbox" id="c1"><label for="c1"><span class="p ig">IG</span> <b>Lun 17</b> — Reel #2 con el segundo mejor clip del Ep.1 + "faltan 3 días"</label></li>
-    <li><input type="checkbox" id="c2"><label for="c2"><span class="p st">Stories</span> <b>Mié 19</b> — sticker de cuenta regresiva + teaser de 15s del intro</label></li>
-    <li><input type="checkbox" id="c3"><label for="c3"><span class="p yt">YT</span> <b>Jue 20, 17:00 BA</b> — el Ep.1 se hace público</label></li>
-    <li><input type="checkbox" id="c4"><label for="c4"><span class="p ig">IG</span> <b>Jue 20, 17:00</b> — publicar el intro actualizado con caption de anuncio</label></li>
-    <li><input type="checkbox" id="c5"><label for="c5"><span class="p st">Stories</span> <b>Jue 20</b> — 3 stories con link a lo largo de la tarde (17h, 20h, 22h). Que todo el equipo comparta en sus cuentas personales</label></li>
-    <li><input type="checkbox" id="c6"><label for="c6"><span class="p op">Aliados</span> Avisarle al podcast <b>Pro Shop</b> que sale el Ep.1 — ya promocionaron el canal en su episodio 200</label></li>
-    <li><input type="checkbox" id="c7"><label for="c7"><span class="p op">Colab</span> <b>Vie 21</b> — Mike publica el posteo de colaboración en su canal personal</label></li>
-    <li><input type="checkbox" id="c8"><label for="c8"><span class="p op">Rodaje</span> <b>Vie 21</b> — sesión de grabación. Cancha por confirmar y hay conflicto de agenda</label></li>
-    <li><input type="checkbox" id="c9"><label for="c9"><span class="p ig">IG</span> <b>Dom 23</b> — Reel #3 del Ep.1: "¿ya viste el episodio 1?"</label></li>
-  </ul>
-
-  <h2>Arreglos pendientes</h2>
-  <p class="lede">Cosas rotas o incompletas que conviene cerrar antes de que llegue tráfico.</p>
-
+  <h2>Qué mirar del Ep.1 antes de armar el Ep.2</h2>
+  <p class="lede">Los datos del primer video son la única información real que tenemos sobre esta audiencia. Vale media hora leerlos.</p>
   <div class="cols">
     <div class="card">
-      <h4>Instagram sin link a YouTube</h4>
-      <p style="margin:0;font-size:13.5px">Toda la estrategia dice "todo empuja a YouTube" y la bio no tiene ningún link. YouTube sí linkea a Instagram — está al revés.</p>
+      <h4>Retención</h4>
+      <ul>
+        <li>¿Dónde se cae la curva? Ese minuto es lo que hay que cortar en el próximo</li>
+        <li>¿Cuánto dura el pico inicial? Dice si el hook funciona</li>
+        <li>Un video de 38 minutos con retención baja al inicio pide episodios más cortos</li>
+      </ul>
     </div>
     <div class="card">
-      <h4>El canal se llama "Bogey Club"</h4>
-      <p style="margin:0;font-size:13.5px">El handle es <code>@ElBogeyClub</code> y en Instagram sos <i>El Bogey Club</i>, pero el nombre visible de YouTube perdió el "El".</p>
+      <h4>Origen del tráfico</h4>
+      <ul>
+        <li>¿Cuánto vino de Instagram y cuánto de YouTube mismo?</li>
+        <li>Si casi todo vino de afuera, el algoritmo todavía no lo está empujando solo</li>
+        <li>Eso define cuánto peso sigue teniendo Instagram</li>
+      </ul>
     </div>
     <div class="card">
-      <h4>YouTube sin banner ni trailer</h4>
-      <p style="margin:0;font-size:13.5px">El que llegue el jueves desde Instagram ve un canal vacío. Mínimo: banner, foto, descripción larga y el intro como trailer.</p>
+      <h4>Miniatura y título</h4>
+      <ul>
+        <li>El CTR dice si la miniatura funciona</li>
+        <li>Si es bajo con buena retención, el problema es la portada, no el video</li>
+        <li>Se puede cambiar la miniatura de un video ya publicado</li>
+      </ul>
     </div>
     <div class="card">
-      <h4>El escudo impreso no lleva el nombre</h4>
-      <p style="margin:0;font-size:13.5px">En la próxima impresión de banderitas hay que poner "El Bogey Club" a cada lado. Sin el nombre, la foto no genera búsqueda.</p>
+      <h4>Comentarios</h4>
+      <ul>
+        <li>Qué momento cita la gente: eso es lo que hay que repetir</li>
+        <li>Qué piden: candidatos a episodio futuro</li>
+        <li>Contestar todo en los primeros días ayuda a la distribución</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Pendientes</h2>
+  <div class="cols">
+    <div class="card">
+      <h4>El colchón quedó corto</h4>
+      <p style="margin:0;font-size:13.5px">La regla era tener tres episodios editados por delante. Con el Ep.1 publicado queda solo el Ep.2. El Ep.3 tendría que entrar en edición ya.</p>
     </div>
     <div class="card">
-      <h4>TikTok sin abrir</h4>
-      <p style="margin:0;font-size:13.5px">Se definió como plataforma de volumen para testear. El handle no está reservado — conviene tomarlo aunque no se use.</p>
+      <h4>TikTok sigue sin abrir</h4>
+      <p style="margin:0;font-size:13.5px">Con 1.300 seguidores en Instagram y material de sobra, el laboratorio de volumen tiene más sentido ahora que antes del lanzamiento. Como mínimo, reservar el handle.</p>
     </div>
     <div class="card">
-      <h4>Falta cargar los links de Drive</h4>
-      <p style="margin:0;font-size:13.5px">El calendario y el pipeline tienen el qué y el cuándo. Falta el dónde vive cada archivo.</p>
+      <h4>Playlists en YouTube</h4>
+      <p style="margin:0;font-size:13.5px">Con un video no hacía falta. Con el segundo sí: una playlist de episodios hace que uno lleve al otro solo.</p>
+    </div>
+    <div class="card">
+      <h4>Links de Drive y Frame.io</h4>
+      <p style="margin:0;font-size:13.5px">El pipeline tiene el qué y el cuándo. Falta el dónde vive cada archivo, que era el action item original del calendario.</p>
+    </div>
+    <div class="card">
+      <h4>El escudo impreso sin el nombre</h4>
+      <p style="margin:0;font-size:13.5px">En la próxima impresión de banderitas, "El Bogey Club" a cada lado. Sin el nombre la foto no genera búsqueda.</p>
+    </div>
+    <div class="card">
+      <h4>Contactos sin cargar</h4>
+      <p style="margin:0;font-size:13.5px">Teléfonos y mails del equipo, y los datos de Pipe y Chacho. Están en la solapa de Contactos esperando.</p>
     </div>
   </div>
 </section>
@@ -288,8 +318,8 @@
     <table>
       <thead><tr><th>Fecha</th><th>Qué</th><th>Cancha</th><th>Estado</th></tr></thead>
       <tbody>
-        <tr><td class="d">Vie 21 Ago</td><td>Rodaje — 18 hoyos, se parte en dos episodios</td><td class="dim">Por confirmar</td><td><span class="p op">Conflicto de agenda</span></td></tr>
-        <tr><td class="d">Mié 26 Ago</td><td>Fecha alternativa mencionada en la reunión</td><td class="dim">—</td><td><span class="p todo">Sin definir</span></td></tr>
+        <tr class="done"><td class="d">Vie 21 Ago</td><td>Rodaje — 18 hoyos, se parte en dos episodios</td><td class="dim">Por confirmar</td><td><span class="p op">Conflicto de agenda</span></td></tr>
+        <tr><td class="d">Mié 26 Ago</td><td>Fecha alternativa que se había mencionado</td><td class="dim">—</td><td><span class="p todo">Sin definir</span></td></tr>
         <tr><td class="d">Septiembre</td><td>Rodaje mensual — sumar un invitado nuevo</td><td class="dim">—</td><td><span class="p todo">Por agendar</span></td></tr>
         <tr><td class="d">Octubre</td><td>Gapping y fitting en cancha</td><td class="dim">Contacto del pro shop</td><td><span class="p todo">Idea</span></td></tr>
         <tr><td class="d">Fin de año</td><td>Sesión en Uruguay</td><td class="dim">Cantegril</td><td><span class="p todo">Explorando</span></td></tr>
@@ -307,19 +337,19 @@
     <table>
       <thead><tr><th>Fecha</th><th>Canal</th><th>Contenido</th><th>Fuente</th></tr></thead>
       <tbody>
-        <tr class="wk"><td colspan="4">Semana 0 — pre-lanzamiento</td></tr>
-        <tr><td class="d">Vie 14 Ago</td><td><span class="p ig">IG post</span></td><td>Pieza de lanzamiento — logo + presentación del canal</td><td class="dim">Arte</td></tr>
-        <tr><td class="d">Dom 16 Ago</td><td><span class="p ig">Reel</span></td><td>Clip manifiesto de Mike — "se están riendo de mí"</td><td class="dim">Filmado nuevo</td></tr>
+        <tr class="wk"><td colspan="4">Semana 0 — pre-lanzamiento · hecho</td></tr>
+        <tr class="done"><td class="d">Vie 14 Ago</td><td><span class="p ig">IG post</span></td><td>Pieza de lanzamiento — logo + presentación del canal</td><td class="dim">Arte</td></tr>
+        <tr class="done"><td class="d">Dom 16 Ago</td><td><span class="p ig">Reel</span></td><td>Clip manifiesto de Mike — "se están riendo de mí"</td><td class="dim">Filmado nuevo</td></tr>
 
-        <tr class="wk"><td colspan="4">Semana 1 — lanzamiento</td></tr>
-        <tr><td class="d">Lun 17 Ago</td><td><span class="p ig">Reel</span></td><td>Clip #2 + "faltan 3 días"</td><td class="dim">Ep.1</td></tr>
-        <tr><td class="d">Mié 19 Ago</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva + teaser del intro (15s)</td><td class="dim">Intro</td></tr>
-        <tr class="drop"><td class="d">Jue 20 Ago</td><td><span class="p yt">YouTube</span></td><td><b>EP. 1 — Mike Solo en El Pilar: Break 43</b> · 17:00 BA</td><td class="dim">Editado</td></tr>
-        <tr class="drop"><td class="d">Jue 20 Ago</td><td><span class="p ig">IG post</span></td><td>Intro actualizado + caption de anuncio + 3 stories con link</td><td class="dim">Intro</td></tr>
-        <tr><td class="d">Vie 21 Ago</td><td><span class="p op">Colab</span></td><td>Posteo de Mike en su canal personal · <b>rodaje</b></td><td class="dim">Mike</td></tr>
-        <tr><td class="d">Dom 23 Ago</td><td><span class="p ig">Reel</span></td><td>Clip #3 — "¿ya viste el episodio 1?"</td><td class="dim">Ep.1</td></tr>
+        <tr class="wk"><td colspan="4">Semana 1 — lanzamiento · hecho</td></tr>
+        <tr class="done"><td class="d">Lun 17 Ago</td><td><span class="p ig">Reel</span></td><td>Clip #2 + "faltan 3 días"</td><td class="dim">Ep.1</td></tr>
+        <tr class="done"><td class="d">Mié 19 Ago</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva + teaser del intro (15s)</td><td class="dim">Intro</td></tr>
+        <tr class="drop done"><td class="d">Jue 20 Ago</td><td><span class="p yt">YouTube</span></td><td><b>EP. 1 — ¿Podrá Mike superar su handicap en 9 hoyos de Pilar Golf?</b> · 38:08</td><td class="dim">4,6 K vistas</td></tr>
+        <tr class="drop done"><td class="d">Jue 20 Ago</td><td><span class="p ig">IG post</span></td><td>Intro actualizado + caption de anuncio + 3 stories con link</td><td class="dim">Intro</td></tr>
+        <tr class="done"><td class="d">Vie 21 Ago</td><td><span class="p op">Colab</span></td><td>Posteo de Mike en su canal personal · <b>rodaje</b></td><td class="dim">Mike</td></tr>
+        <tr class="done"><td class="d">Dom 23 Ago</td><td><span class="p ig">Reel</span></td><td>Clip #3 — "¿ya viste el episodio 1?"</td><td class="dim">Ep.1</td></tr>
 
-        <tr class="wk"><td colspan="4">Semana 2 — sostener</td></tr>
+        <tr class="wk"><td colspan="4">Semana 2 — sostener · en curso</td></tr>
         <tr><td class="d">Lun 24 Ago</td><td><span class="p yt">Short</span></td><td>Clip vertical del Ep.1 con link al video completo</td><td class="dim">Ep.1</td></tr>
         <tr><td class="d">Mié 26 Ago</td><td><span class="p ig">Reel</span></td><td>Ficción "vida de golfista" #1 — despertarse 5am</td><td class="dim">Nuevo · rápido</td></tr>
         <tr><td class="d">Jue 27 Ago</td><td><span class="p ig">Carrusel</span></td><td><b>Los 9 hoyos de Pilar</b> — portada con cancha y fecha, un slide por hoyo</td><td class="dim">Ep.1</td></tr>
@@ -328,7 +358,7 @@
         <tr class="wk"><td colspan="4">Semana 3 — Ep.2</td></tr>
         <tr><td class="d">Lun 31 Ago</td><td><span class="p ig">Reel</span></td><td>El número más sorprendente del fitting</td><td class="dim">Ep.2</td></tr>
         <tr><td class="d">Mié 2 Sep</td><td><span class="p st">Stories</span></td><td>Cuenta regresiva Ep.2</td><td class="dim">—</td></tr>
-        <tr class="drop"><td class="d">Jue 3 Sep</td><td><span class="p yt">YouTube</span></td><td><b>EP. 2 — Fitting: qué palos estás usando mal</b> · 17:00 BA</td><td class="dim">Editado</td></tr>
+        <tr class="drop"><td class="d">Jue 3 Sep</td><td><span class="p yt">YouTube</span></td><td><b>EP. 2 — Fitting: qué palos estás usando mal</b> · 17:00 BA<br><span class="dim">Decisión abierta: se puede adelantar al jue 27 de agosto para no dejar 14 días de silencio</span></td><td class="dim">Editado</td></tr>
         <tr><td class="d">Dom 6 Sep</td><td><span class="p ig">Reel</span></td><td>Clip del Ep.2 + CTA a YouTube</td><td class="dim">Ep.2</td></tr>
 
         <tr class="wk"><td colspan="4">Semana 4 — sostener</td></tr>
@@ -382,14 +412,14 @@
         <tr>
           <td class="d">Ep.1</td>
           <td><b>Mike Solo en El Pilar</b> — 9 hoyos, objetivo Break 43<br><span class="dim">Plex: PILAR GOLF 01 – MIKE SOLO – BREAK 43 – COLOR · ~38 min</span></td>
-          <td><span class="p ok">Sí</span></td><td><span class="p ok">Sí</span></td><td><span class="p op">Pendiente</span></td>
-          <td class="d">20 Ago</td><td class="dim">—</td>
+          <td><span class="p ok">Sí</span></td><td><span class="p ok">Sí</span></td><td><span class="p ok">Sí</span></td>
+          <td class="d">Publicado</td><td><a href="https://www.youtube.com/@ElBogeyClub" target="_blank" rel="noopener">Ver</a></td>
         </tr>
         <tr>
           <td class="d">Ep.2</td>
           <td><b>Sesión de fitting de Mike</b><br><span class="dim">Plex: Fitting ok – EDIT 01 – COLOR · la luz quedó más floja, se le puso filtro</span></td>
           <td><span class="p ok">Sí</span></td><td><span class="p ok">Sí</span></td><td><span class="p todo">No</span></td>
-          <td class="d">3 Sep</td><td class="dim">—</td>
+          <td class="d">3 Sep <span class="dim">(¿27 Ago?)</span></td><td class="dim">—</td>
         </tr>
         <tr>
           <td class="d">Ep.3</td><td><b>Mike + Pipe</b> — desafío de 5 tiros, parte 1</td>
@@ -427,7 +457,7 @@
 
   <div class="box go">
     <h4>La regla del colchón</h4>
-    <p>Siempre tres episodios editados por delante. Hoy hay dos, así que el Ep.3 debería entrar en edición antes del 20 de agosto — si no, se arranca la cadencia con el colchón corto y el primer imprevisto rompe la racha.</p>
+    <p>Siempre tres episodios editados por delante. Con el Ep.1 ya publicado queda uno solo: el Ep.2. El Ep.3 tendría que entrar en edición esta semana — si no, el primer imprevisto rompe la racha justo cuando el canal está tomando envión.</p>
   </div>
 
   <h2>Formato</h2>
@@ -834,8 +864,7 @@ Instagram: @elbogeyclub</div>
     else if (n === 0) el.textContent = 'hoy';
     else el.textContent = doneTxt;
   }
-  paint(document.getElementById('s1'), '2026-08-20T17:00:00-03:00', 'ya salió');
-  paint(document.getElementById('s2'), '2026-08-21T09:00:00-03:00', 'pasó');
+  paint(document.getElementById('s1'), '2026-09-03T17:00:00-03:00', 'ya salió');
 
   /* ---------- copy buttons ---------- */
   document.querySelectorAll('[data-copy]').forEach(function(btn){
