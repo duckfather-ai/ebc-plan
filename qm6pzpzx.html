@@ -220,6 +220,28 @@
     .cal-grid,.cal-wd{gap:4px}
   }
 
+  /* ---------- tira de la semana ---------- */
+  .sem{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:12px 0 6px}
+  .sem-d{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:9px 10px;min-height:78px}
+  .sem-cab{font-size:11px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.05em}
+  .sem-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-top:4px;color:var(--dim)}
+  .sem-txt{font-size:11px;line-height:1.35;color:var(--dim);margin-top:3px}
+  .sem-d.t-reel{border-left:4px solid #A855C4}
+  .sem-d.t-reel .sem-tag{color:#8A3FA3}
+  .sem-d.t-grabacion{border-left:4px solid var(--green);background:var(--green-w)}
+  .sem-d.t-grabacion .sem-tag{color:var(--green)}
+  .sem-d.t-edicion{border-left:4px solid #D9A227}
+  .sem-d.t-edicion .sem-tag{color:#9A7413}
+  .sem-d.e-editado{background:#C9E7D1;border-color:#63A87E}
+  .sem-d.e-filmado{background:#FAF04B;border-color:#D4C41C}
+  .sem-d.e-filmado .sem-txt,.sem-d.e-filmado .sem-tag{color:#5E5405}
+  .sem-d.e-porfilmar{background:#F0A3A3;border-color:#D2716B}
+  .sem-d.e-porfilmar .sem-txt,.sem-d.e-porfilmar .sem-tag{color:#7E241C}
+  .sem-d.hoy{box-shadow:inset 0 0 0 2px var(--ink)}
+  @media (max-width:720px){
+    .sem{grid-template-columns:repeat(2,1fr)}
+    .sem-d{min-height:0}
+  }
   .note{font-size:12.5px;color:var(--dim);margin-top:10px}
   footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
 
@@ -271,12 +293,7 @@
 <!-- ============================== HOY ============================== -->
 <section id="hoy" class="on">
 
-  <div class="box hot">
-    <h4>Esta semana: estreno del fitting</h4>
-    <p><b>Lunes y martes:</b> edición del fitting y organización de la edición de Mike vs Pipe Parte 1.
-    <b>Miércoles 26:</b> reel de anticipación. <b>Jueves 27:</b> <i>Sesión de fitting de Mike</i> al aire.</p>
-    <p style="margin-bottom:0">Desde el jueves que viene el calendario pasa a <b>estreno todos los jueves</b>, sin semanas de descanso, hasta el 29 de octubre.</p>
-  </div>
+  <div class="box hot" id="hoy-cabeza"><h4>—</h4><p style="margin-bottom:0">—</p></div>
 
   <div class="box go">
     <h4>Cómo viene el canal</h4>
@@ -286,59 +303,71 @@
     El jueves como día de estreno funciona, y el empujón del viernes también.</p>
   </div>
 
-  <h2>Semana del 24 al 30 de agosto</h2>
-  <ul class="chk">
-    <li><input type="checkbox" id="w1"><label for="w1"><span class="p op">Edición</span> Terminar la edición del fitting</label></li>
-    <li><input type="checkbox" id="w2"><label for="w2"><span class="p op">Edición</span> Organizar la edición de Mike vs Pipe Parte 1</label></li>
-    <li><input type="checkbox" id="w3"><label for="w3"><span class="p ig">Reel</span> <b>Mié 26</b> — reel de anticipación del fitting</label></li>
-    <li><input type="checkbox" id="w4"><label for="w4"><span class="p yt">Estreno</span> <b>Jue 27, 17:00</b> — Sesión de fitting de Mike</label></li>
-    <li><input type="checkbox" id="w5"><label for="w5"><span class="p op">Drive</span> Subir la versión <b>genérica</b> del video, sin música ni gráfica, para poder cortar clips sin que se vean los cortes de edición</label></li>
-    <li><input type="checkbox" id="w6"><label for="w6"><span class="p op">Drive</span> Subir los archivos de música, así se puede terminar de editar sin depender del proyecto original</label></li>
-    <li><input type="checkbox" id="w7"><label for="w7"><span class="p st">TikTok</span> Activar la cuenta y empezar a subir clips cortos</label></li>
-    <li><input type="checkbox" id="w8"><label for="w8"><span class="p op">Rodaje</span> Cerrar la grabación del <b>miércoles 2 de septiembre en La Orquídea</b>: salen dos episodios de ese día</label></li>
-    <li><input type="checkbox" id="w9"><label for="w9"><span class="p op">Invitados</span> Confirmar a Agustina Gómez Cisterna — su episodio está agendado para el 24 de septiembre</label></li>
-    <li><input type="checkbox" id="w10"><label for="w10"><span class="p op">Invitados</span> Destrabar Yarda 51: el estreno del 1 de octubre depende de esa grabación</label></li>
-    <li><input type="checkbox" id="w11"><label for="w11"><span class="p op">Invitados</span> Conseguir el contacto de Maggie Simmer — su episodio está agendado para el 29 de octubre</label></li>
-    <li><input type="checkbox" id="w12"><label for="w12"><span class="p op">Post</span> Contestar los comentarios del Ep.1 — con 4.600 vistas hay conversación para aprovechar</label></li>
-  </ul>
+  <h2 id="hoy-titulo">Esta semana</h2>
+  <p class="lede">Se arma solo con el calendario, así que cada día muestra la semana que corresponde.</p>
+  <div id="hoy-dias" class="sem"></div>
 
-  <h2>Los tres riesgos del calendario</h2>
-  <p class="lede">La grilla llega hasta el 29 de octubre. Estos son los puntos donde se puede romper.</p>
+  <h3>Lo que hay que entregar</h3>
+  <ul class="chk" id="hoy-entregas"></ul>
+
+  <div class="box">
+    <h4>Tres cosas que se repiten todas las semanas</h4>
+    <p><b>El reel del miércoles es un teaser.</b> No es un clip suelto: anticipa el episodio que sale al día siguiente y cierra mandando al estreno.</p>
+    <p><b>La organización de la edición siguiente la llevan Joaquín y Tati.</b> Mientras se termina el episodio del jueves, ellos dejan armado el material del que viene después.</p>
+    <p style="margin-bottom:0"><b>La versión genérica va a Drive antes del estreno</b>, no después. Sin música ni gráfica, así se llega a cortar los clips a tiempo y no se pierde la semana de difusión.</p>
+  </div>
+
+  <h2>Riesgos</h2>
   <div class="cols">
     <div class="card">
       <h4>Hay una sola grabación agendada</h4>
-      <p style="margin:0;font-size:13.5px">El miércoles 2 de septiembre en La Orquídea, y de ese día tienen que salir <b>dos</b> episodios: el Break 43 y el de Agustina.
-      Si ese día se cae o rinde menos de lo esperado, se caen dos jueves.</p>
+      <p style="margin:0;font-size:13.5px">El miércoles 2 de septiembre en La Orquídea, y de ese día tienen que salir <b>dos</b> episodios: el Break 43 y el de Tina.
+      Si ese día se cae o rinde menos de lo esperado, se caen dos jueves seguidos.</p>
     </div>
     <div class="card">
-      <h4>Tres estrenos dependen de gente sin confirmar</h4>
-      <p style="margin:0;font-size:13.5px">Yarda 51 el 1 de octubre y Maggie el 29 figuran <b>en duda</b> en la planilla, y Agustina como <b>a confirmar</b>.
-      Son tres jueves de los diez que quedan.</p>
+      <h4>Las fechas de los invitados son de salida al aire, no de grabación</h4>
+      <p style="margin:0;font-size:13.5px">Tina figura el 24 de septiembre y Maggie el 29 de octubre: esos son los días en que el episodio sale, no en los que se filma.
+      La grabación tiene que pasar bastante antes, y todavía no está agendada en ninguno de los dos casos.</p>
     </div>
     <div class="card">
-      <h4>Estreno semanal sin colchón</h4>
-      <p style="margin:0;font-size:13.5px">Pasar de quincenal a semanal duplica la exigencia de edición justo cuando el colchón quedó en cero.
-      Tercerizar tres o cuatro capítulos es lo que compra el margen.</p>
+      <h4>Plan B de invitados</h4>
+      <p style="margin:0 0 8px;font-size:13.5px">Si alguna de las fechas no se puede organizar, hay gente ya identificada a la que se puede recurrir sin empezar de cero:</p>
+      <ul style="margin:0;padding-left:17px;font-size:13px">
+        <li><b>Tommy Bianchi</b> — cara del golf argentino en Instagram</li>
+        <li><b>Jorgito Fernández Valdés</b> — profesional, ya invitado a jugar</li>
+        <li><b>Emiliano Grillo</b> — va a estar en Buenos Aires</li>
+        <li><b>Santi Garat</b> — profesor de putt</li>
+        <li><b>Romanato</b> — gapping y fitting en cancha</li>
+        <li><b>Horacio</b> — grabación en su pro shop</li>
+        <li><b>Leandro González Pires y Manuel Lanzini</b> — vía Juan Martín Verano</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Construir el colchón de a poco</h4>
+      <p style="margin:0;font-size:13.5px">La meta es llegar a tener <b>cinco o seis episodios terminados guardados</b>, listos para subir el día que no haya nada más.
+      No se consigue de golpe: se arma sumando de a uno, adelantando edición cuando hay aire y aprovechando cada rodaje para sacar dos capítulos.
+      Ese colchón es lo que convierte el estreno semanal en algo que se puede sostener.</p>
     </div>
   </div>
 
-  <h2>Pendientes de fondo</h2>
+  <h2>Pendientes</h2>
   <div class="cols">
     <div class="card">
       <h4>TikTok sin activar</h4>
-      <p style="margin:0;font-size:13.5px">La cuenta existe pero no tiene contenido. Con 1.300 seguidores en Instagram y material de sobra, es la palanca más barata sin usar.</p>
+      <p style="margin:0;font-size:13.5px">La cuenta existe pero no tiene contenido. Con 1.300 seguidores en Instagram y material de sobra, es la palanca más barata que queda sin usar.</p>
     </div>
     <div class="card">
-      <h4>Playlists en YouTube</h4>
-      <p style="margin:0;font-size:13.5px">Con estreno semanal urge: una playlist de episodios hace que uno lleve al otro solo.</p>
-    </div>
-    <div class="card">
-      <h4>El escudo impreso sin el nombre</h4>
-      <p style="margin:0;font-size:13.5px">En la próxima impresión de banderitas, "El Bogey Club" a cada lado. Sin el nombre la foto no genera búsqueda.</p>
+      <h4>Playlist de YouTube — cuando haya 5 videos</h4>
+      <p style="margin:0;font-size:13.5px">Con dos o tres no cambia nada. A partir del quinto sí: una playlist de episodios hace que uno lleve al siguiente solo y sube el tiempo de visualización por sesión.</p>
     </div>
     <div class="card">
       <h4>Links de Drive por episodio</h4>
-      <p style="margin:0;font-size:13.5px">El pipeline tiene el qué y el cuándo. Falta el dónde vive cada archivo.</p>
+      <p style="margin:0;font-size:13.5px">El pipeline tiene el qué y el cuándo, falta el dónde vive cada archivo.
+      Se puede cargar automático: alcanza con compartir las carpetas de material con la cuenta que ya está conectada.</p>
+    </div>
+    <div class="card">
+      <h4>Noviembre en blanco</h4>
+      <p style="margin:0;font-size:13.5px">El calendario termina el 29 de octubre. Con estreno semanal conviene empezar a llenarlo ahora, y con él agendar las grabaciones que lo alimentan.</p>
     </div>
   </div>
 </section>
@@ -500,6 +529,7 @@
   <div class="box">
     <h4>Fuente y criterio</h4>
     <p>Esta tabla sale de la planilla de invitados que mantiene producción, y se sincroniza cada tres horas.</p>
+    <p><b>Ojo con las fechas:</b> la columna de fecha es el día en que el episodio <b>sale al aire</b>, no el día de grabación. La grabación tiene que pasar bastante antes.</p>
     <p style="margin-bottom:0"><b>Lo que queda afuera a propósito:</b> teléfonos, mails, datos de representantes y las notas internas de la planilla.
     Esta página es de acceso abierto y ahí hay comentarios francos sobre gente que todavía no dijo que sí. Para eso está la planilla.</p>
   </div>
@@ -507,13 +537,13 @@
   <h2>Pipeline de invitados</h2>
   <div class="scroll">
     <table id="tbl-inv">
-      <thead><tr><th>Quién</th><th>Quién es</th><th>Cancha</th><th>Fecha</th><th>Estado</th></tr></thead>
+      <thead><tr><th>Quién</th><th>Quién es</th><th>Cancha</th><th>Sale al aire</th><th>Estado</th></tr></thead>
       <tbody>
         <tr><td><b>Pipe</b><br><span class="dim">Elenco fijo</span></td><td>Personaje recurrente. Juega bastante mejor que Mike y ese contraste es el motor del formato</td><td>Pilar Golf</td><td>3 y 10 sep</td><td><span class="p ok">Filmado</span></td></tr>
         <tr><td><b>Chacho</b><br><span class="dim">Elenco fijo</span></td><td>Recurrente. Scramble de 18 hoyos, se parte en dos episodios</td><td>La Providencia</td><td>8 y 15 oct</td><td><span class="p ok">Filmado</span></td></tr>
-        <tr><td><b>Agustina "Tina" Gómez Cisterna</b><br><span class="dim">@tinagomezcisterna</span></td><td>Creadora de contenido de golf, 6,7 mil seguidores</td><td>La Orquídea</td><td>24 sep</td><td><span class="p op">A confirmar</span></td></tr>
-        <tr><td><b>Juan Martín Verano</b><br><span class="dim">@summergolf1986</span></td><td>Dueño de Yarda 51 y profesor de golf. Además es la puerta de entrada hacia dos futbolistas como futuros invitados</td><td>Yarda 51</td><td>1 oct</td><td><span class="p op">En duda</span></td></tr>
-        <tr><td><b>Maggie Simmer</b><br><span class="dim">@maggiesimmer</span></td><td>Golfista profesional del Ladies European Tour. Jugó los Juegos Olímpicos de Tokio 2020</td><td>Pilará</td><td>29 oct</td><td><span class="p op">En duda · falta el contacto</span></td></tr>
+        <tr><td><b>Agustina "Tina" Gómez Cisterna</b><br><span class="dim">@tinagomezcisterna</span></td><td>Creadora de contenido de golf, 6,7 mil seguidores</td><td>La Orquídea</td><td>24 sep <span class="dim">(sale al aire)</span></td><td><span class="p op">A confirmar · se graba el 2 de sep</span></td></tr>
+        <tr><td><b>Juan Martín Verano</b><br><span class="dim">@summergolf1986</span></td><td>Dueño de Yarda 51 y profesor de golf. Además es la puerta de entrada hacia dos futbolistas como futuros invitados</td><td>Yarda 51</td><td>1 oct <span class="dim">(sale al aire)</span></td><td><span class="p op">Solo falta hablarlo y organizarlo</span></td></tr>
+        <tr><td><b>Maggie Simmer</b><br><span class="dim">@maggiesimmer</span></td><td>Golfista profesional del Ladies European Tour. Jugó los Juegos Olímpicos de Tokio 2020</td><td>29 oct <span class="dim">(sale al aire)</span></td><td>Pilará</td><td><span class="p op">Falta el contacto · grabación sin agendar</span></td></tr>
         <tr><td><b>Santiago Canda</b><br><span class="dim">@_taticanda</span></td><td>Golfista</td><td>Cancha Norte</td><td class="dim">—</td><td><span class="p todo">Descartado</span></td></tr>
       </tbody>
     </table>
@@ -944,7 +974,7 @@ Instagram: @elbogeyclub</div>
     '2026-09-21': {t:'edicion', n:'Edición Mike vs Tina', org:'Mike en Yarda 51'},
     '2026-09-22': {t:'edicion', n:'Edición Mike vs Tina', org:'Mike en Yarda 51'},
     '2026-09-23': {t:'reel',    n:'Reel de anticipación de Mike vs Tina'},
-    '2026-09-24': {t:'estreno', e:'porfilmar', n:'Mike vs Tina — La Orquídea', ep:'Episodio 6', cancha:'La Orquídea', alerta:'La invitada figura como "a confirmar" en la planilla.'},
+    '2026-09-24': {t:'estreno', e:'porfilmar', n:'Mike vs Tina — La Orquídea', ep:'Episodio 6', cancha:'La Orquídea', alerta:'Esta es la fecha de salida al aire. Se graba el 2 de septiembre en La Orquídea y la invitada todavía figura como a confirmar.'},
     '2026-09-25': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
     '2026-09-26': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
     '2026-09-27': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
@@ -952,7 +982,7 @@ Instagram: @elbogeyclub</div>
     '2026-09-29': {t:'edicion', n:'Edición Mike en Yarda 51', org:'Scramble La Providencia — Parte 1'},
     '2026-09-30': {t:'reel',    n:'Reel de anticipación de Mike en Yarda 51'},
 
-    '2026-10-01': {t:'estreno', e:'porfilmar', n:'Mike en Yarda 51', ep:'Episodio 7', cancha:'Yarda 51', alerta:'El invitado figura "en duda" y todavía no hay fecha de grabación.'},
+    '2026-10-01': {t:'estreno', e:'porfilmar', n:'Mike en Yarda 51', ep:'Episodio 7', cancha:'Yarda 51', alerta:'Esta es la fecha de salida al aire. No está trabado: falta hablarlo con Yarda 51 y agendar la grabación.'},
     '2026-10-02': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
     '2026-10-03': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
     '2026-10-04': {t:'edicion', n:'Edición Scramble Parte 1', org:'Scramble Parte 2'},
@@ -973,13 +1003,13 @@ Instagram: @elbogeyclub</div>
     '2026-10-19': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Mike vs Maggie — Pilará'},
     '2026-10-20': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Mike vs Maggie — Pilará'},
     '2026-10-21': {t:'reel',    n:'Reel de anticipación de Mike Break 43 — Pilará'},
-    '2026-10-22': {t:'estreno', e:'porfilmar', n:'Mike Break 43 — Pilará', ep:'Episodio 10', cancha:'Pilará', alerta:'Todavía no hay fecha de grabación para este episodio.'},
+    '2026-10-22': {t:'estreno', e:'porfilmar', n:'Mike Break 43 — Pilará', ep:'Episodio 10', cancha:'Pilará', alerta:'Esta es la fecha de salida al aire. Todavía no hay fecha de grabación agendada.'},
     '2026-10-23': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-24': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-26': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-27': {t:'edicion', n:'Edición Mike Break 43 — Pilará', org:'Próximo video, sin definir'},
     '2026-10-28': {t:'reel',    n:'Reel de anticipación de Mike vs Maggie'},
-    '2026-10-29': {t:'estreno', e:'porfilmar', n:'Mike vs Maggie Simmer', ep:'Episodio 11', cancha:'Pilará', alerta:'La invitada figura "en duda" y falta conseguir el contacto.'}
+    '2026-10-29': {t:'estreno', e:'porfilmar', n:'Mike vs Maggie Simmer', ep:'Episodio 11', cancha:'Pilará', alerta:'Esta es la fecha de salida al aire, no la de grabación. Falta conseguir el contacto de Maggie y agendar el rodaje bastante antes.'}
   };
 
   var TAREAS = {
@@ -1138,6 +1168,101 @@ Instagram: @elbogeyclub</div>
     pintarMes();
     if (DIAS[hoy]) abrirDia(hoy);
   })();
+
+
+  /* ---------- "Esta semana" se arma sola desde el calendario ---------- */
+  function lunesDeEstaSemana(){
+    var n=new Date();
+    var dow=(n.getDay()+6)%7;
+    return new Date(n.getFullYear(), n.getMonth(), n.getDate()-dow);
+  }
+  function isoDe(d){ return iso(d.getFullYear(), d.getMonth(), d.getDate()); }
+
+  function pintarSemana(){
+    var cont=document.getElementById('hoy-dias');
+    if (!cont) return;
+    var lun=lunesDeEstaSemana();
+    var hoy=hoyISO();
+    var dd=[], k;
+    for (var i=0;i<7;i++){
+      var f=new Date(lun.getFullYear(), lun.getMonth(), lun.getDate()+i);
+      dd.push({f:f, k:isoDe(f), ev:DIAS[isoDe(f)]});
+    }
+
+    // título con el rango
+    var a=dd[0].f, z=dd[6].f;
+    var t=document.getElementById('hoy-titulo');
+    if (t){
+      t.textContent = (a.getMonth()===z.getMonth())
+        ? 'Semana del '+a.getDate()+' al '+z.getDate()+' de '+NOMMES[z.getMonth()]
+        : 'Semana del '+a.getDate()+' de '+NOMMES[a.getMonth()]+' al '+z.getDate()+' de '+NOMMES[z.getMonth()];
+    }
+
+    // tira de días
+    var DIA3=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+    cont.innerHTML = dd.map(function(d,i){
+      var ev=d.ev, tp=ev?ev.t:'libre';
+      var cls='sem-d t-'+tp+(ev&&ev.e?' e-'+ev.e:'')+(d.k===hoy?' hoy':'');
+      return '<div class="'+cls+'">'+
+        '<div class="sem-cab">'+DIA3[i]+' '+d.f.getDate()+'</div>'+
+        (ev?'<div class="sem-tag">'+LABEL[tp]+'</div><div class="sem-txt">'+ev.n+'</div>':'<div class="sem-txt dim">Sin nada agendado</div>')+
+        '</div>';
+    }).join('');
+
+    // entregables de la semana, sin repetir
+    var ent=[], vistos={};
+    function add(txt){ if (!vistos[txt]){ vistos[txt]=1; ent.push(txt); } }
+    function frag(x){ return /^(de |del |la |el )/i.test(x) ? x : 'de «'+x+'»'; }
+    dd.forEach(function(d){
+      var ev=d.ev; if (!ev) return;
+      var dia=DIA3[(d.f.getDay()+6)%7]+' '+d.f.getDate();
+      if (ev.t === 'estreno'){
+        if (ev.e === 'porfilmar') add('Este estreno todavía no está filmado — definir la fecha de grabación antes que nada');
+        else if (ev.e === 'filmado') add('Terminar la edición y exportar «'+ev.n+'» — todavía está en amarillo');
+        add(dia+' · Publicar «'+ev.n+'» en YouTube a las 17:00');
+        add('Posteo de anuncio en Instagram y tres stories con link el día del estreno');
+        add('Al día siguiente: empujón fuerte de difusión, que es donde se acumulan las vistas del fin de semana');
+      }
+      if (ev.t === 'reel')      add(dia+' · Publicar el teaser '+frag(ev.n.replace(/^Reel de anticipación /,''))+' a las 17:00');
+      if (ev.t === 'grabacion') add(dia+' · Grabación: '+ev.n);
+      if (ev.t === 'edicion'){
+        add('Avanzar la edición '+frag(ev.n.replace(/^Edición /,'')));
+        if (ev.org) add('Dejar organizado el material de «'+ev.org+'» — a cargo de Joaquín y Tati');
+      }
+    });
+    add('Subir a Drive la versión genérica, sin música ni gráfica, antes del estreno');
+    add('Subir los archivos de música por separado');
+
+    var base='sem-'+isoDe(lun)+'-';
+    var ul=document.getElementById('hoy-entregas');
+    ul.innerHTML = ent.map(function(txt,i){
+      var id=base+i;
+      return '<li><input type="checkbox" id="'+id+'"'+(saved[id]?' checked':'')+'>'+
+             '<label for="'+id+'">'+txt+'</label></li>';
+    }).join('');
+    bindChecks(ul);
+
+    // cabecera
+    var prox=null;
+    for (var j=0;j<7;j++){ if (dd[j].ev && dd[j].ev.t==='estreno' && dd[j].k>=hoy){ prox=dd[j]; break; } }
+    var cab=document.getElementById('hoy-cabeza');
+    if (cab){
+      if (prox){
+        var faltan=Math.round((new Date(prox.k+'T12:00:00')-new Date(hoy+'T12:00:00'))/86400000);
+        var cuando = faltan===0 ? 'hoy' : (faltan===1 ? 'mañana' : 'en '+faltan+' días');
+        cab.querySelector('h4').textContent='El estreno de esta semana sale '+cuando;
+        cab.querySelector('p').innerHTML='<b>'+prox.ev.n+'</b> sale el '+NOMDIA[prox.f.getDay()]+' '+prox.f.getDate()+
+          ' a las 17:00 de Buenos Aires'+
+          (prox.ev.e==='porfilmar' ? '. <b>Todavía no está filmado</b>, así que lo primero es definir la fecha de grabación.'
+           : prox.ev.e==='filmado' ? '. Todavía está en amarillo: hay que terminar la edición y exportar.'
+           : '.');
+      } else {
+        cab.querySelector('h4').textContent='Esta semana no hay estreno';
+        cab.querySelector('p').textContent='Buen momento para adelantar edición y sumar al colchón.';
+      }
+    }
+  }
+  pintarSemana();
 
   /* ---------- copy buttons ---------- */
   document.querySelectorAll('[data-copy]').forEach(function(btn){
