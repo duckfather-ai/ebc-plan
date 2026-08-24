@@ -936,8 +936,9 @@ Instagram: @elbogeyclub</div>
         }).catch(function(){ return false; }));
 
     if (!pend.length){
-      feedNote('La conexión con la planilla todavía no está activa, así que esto es la última versión cargada a mano. '+
-               'Para encenderla hace falta publicar las pestañas de la planilla como CSV y pegar esas URLs en la configuración de la página.', false);
+      feedNote('Los datos salen del calendario de contenidos y de la planilla de invitados que mantiene producción en Drive. '+
+               'Una tarea automática los revisa cada tres horas y actualiza esta página. '+
+               'Si además publican las pestañas como CSV, la lectura pasa a ser instantánea en cada carga.', true);
       return;
     }
     Promise.all(pend).then(function(res){
