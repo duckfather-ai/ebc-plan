@@ -285,7 +285,7 @@
   <div class="stat"><div class="n" id="m-views">4,6 K</div><div class="l">vistas totales del canal</div></div>
   <div class="stat"><div class="n" id="m-ig">1.308</div><div class="l">seguidores en Instagram</div></div>
   <div class="stat"><div class="n hot" id="s1">—</div><div class="l">al próximo estreno</div></div>
-  <div class="stat"><div class="n" id="m-tt">2</div><div class="l">seguidores en TikTok</div></div>
+  <div class="stat"><div class="n" id="m-tt">9</div><div class="l">seguidores en TikTok</div></div>
   <div class="stat"><div class="n" id="m-eps">1</div><div class="l">episodios al aire</div></div>
 </div>
 
@@ -363,7 +363,7 @@
   <div class="cols">
     <div class="card">
       <h4>TikTok arrancó — ahora necesita volumen</h4>
-      <p style="margin:0;font-size:13.5px">Ya está activo con el primer video y 19 likes. El plan que definió el equipo es usarlo como laboratorio:
+      <p style="margin:0;font-size:13.5px">Ya está activo con el primer video, 9 seguidores y 24 likes. El plan que definió el equipo es usarlo como laboratorio:
       subir mucho, ver qué funciona y pasar lo que pega a Instagram. Con un video por semana eso no se puede medir —
       de cada episodio salen varios clips, y ahí es donde conviene volcarlos.</p>
     </div>
@@ -876,7 +876,7 @@ Instagram: @elbogeyclub</div>
       <tbody>
         <tr><td><b>YouTube</b></td><td><a href="https://www.youtube.com/@ElBogeyClub" target="_blank" rel="noopener">@ElBogeyClub</a></td><td>El destino. Drops quincenales los jueves 17hs</td></tr>
         <tr><td><b>Instagram</b></td><td><a href="https://www.instagram.com/elbogeyclub/" target="_blank" rel="noopener">@elbogeyclub</a></td><td>Comedia y tráfico hacia YouTube</td></tr>
-        <tr><td><b>TikTok</b></td><td><a href="https://www.tiktok.com/@elbogeyclub" target="_blank" rel="noopener">@elbogeyclub</a></td><td>Activo: 1 video, 2 seguidores, 19 likes. Laboratorio de volumen — subir mucho y pasar a Instagram lo que funciona.<br><span class="dim">El nombre visible dice "ElBogeyClub" sin espacios; en YouTube e Instagram es "El Bogey Club".</span></td></tr>
+        <tr><td><b>TikTok</b></td><td><a href="https://www.tiktok.com/@elbogeyclub" target="_blank" rel="noopener">@elbogeyclub</a></td><td>Activo: 1 video, 9 seguidores, 24 likes. Laboratorio de volumen — subir mucho y pasar a Instagram lo que funciona.<br><span class="dim">El nombre visible dice "ElBogeyClub" sin espacios; en YouTube e Instagram es "El Bogey Club".</span></td></tr>
         <tr><td><b>Frame.io</b></td><td class="dim">Cargar link</td><td>Revisión de cortes y marcado de timecodes</td></tr>
         <tr><td><b>Google Drive</b></td><td class="dim">Cargar link</td><td>Material bruto y entregables por episodio</td></tr>
         <tr><td><b>Plex — biblioteca EBC</b></td><td class="dim">Servidor propio</td><td>Masters editados</td></tr>
@@ -980,7 +980,9 @@ Instagram: @elbogeyclub</div>
       .then(function(r){ return r.json(); })
       .then(function(d){
         if (!d || !d.estado) throw new Error('respuesta inesperada');
-        ESTADO = d.estado; aplicarEstado();
+        ESTADO = d.estado;
+        if (MODO === 'local') MODO = 'servidor';
+        aplicarEstado();
         return true;
       });
   }
