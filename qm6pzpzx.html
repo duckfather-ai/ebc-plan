@@ -281,13 +281,14 @@
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="n" id="m-subs">501</div><div class="l">subs en YouTube</div></div>
-  <div class="stat"><div class="n" id="m-views">4,6 K</div><div class="l">vistas totales del canal</div></div>
-  <div class="stat"><div class="n" id="m-ig">1.308</div><div class="l">seguidores en Instagram</div></div>
+  <div class="stat"><div class="n" id="m-subs">522</div><div class="l">subs en YouTube</div></div>
+  <div class="stat"><div class="n" id="m-views">4,8 K</div><div class="l">vistas totales del canal</div></div>
+  <div class="stat"><div class="n" id="m-ig">1.311</div><div class="l">seguidores en Instagram</div></div>
   <div class="stat"><div class="n hot" id="s1">—</div><div class="l">al próximo estreno</div></div>
-  <div class="stat"><div class="n" id="m-tt">9</div><div class="l">seguidores en TikTok</div></div>
+  <div class="stat"><div class="n" id="m-tt">11</div><div class="l">seguidores en TikTok</div></div>
   <div class="stat"><div class="n" id="m-eps">1</div><div class="l">episodios al aire</div></div>
 </div>
+<div class="dim" id="m-actualizado" style="text-align:center;font-size:12px;margin:-6px 0 18px">números del canal, revisados dos veces por día</div>
 
 <nav>
   <button class="on" data-t="hoy">Hoy</button>
@@ -306,8 +307,8 @@
 
   <div class="box go">
     <h4>Cómo viene el canal</h4>
-    <p>El Ep.1 salió el jueves 20 y en cuatro días juntó <b>4.600 vistas</b>. El canal pasó de 11 a <b>501 suscriptores</b>
-    e Instagram de 15 a <b>1.308 seguidores</b>.</p>
+    <p>El Ep.1 salió el jueves 20 y en cinco días juntó <b>4.800 vistas</b>. El canal pasó de 11 a <b>522 suscriptores</b>
+    e Instagram de 15 a <b>1.311 seguidores</b>.</p>
     <p style="margin-bottom:0">Compartirlo el viernes generó el pico del fin de semana: de 2.500 vistas el viernes a 4.500 el domingo.
     El jueves como día de estreno funciona, y el empujón del viernes también.</p>
   </div>
@@ -974,6 +975,38 @@ Instagram: @elbogeyclub</div>
     el.className = 'syncpill ' + (tipo || '');
   }
 
+  /* ---- números del canal ---- */
+  function numAR(v){
+    var n = parseInt(String(v).replace(/[^0-9]/g,''), 10);
+    if (!isFinite(n)) return String(v);
+    if (n >= 1000000) return (n/1000000).toFixed(1).replace('.', ',') + ' M';
+    if (n >= 10000)   return (n/1000).toFixed(1).replace('.', ',') + ' K';
+    return n.toLocaleString('es-AR');
+  }
+  function aplicarMetricas(m){
+    if (!m) return;
+    var pares = [['m-subs','subs_youtube'], ['m-views','vistas_totales'],
+                 ['m-ig','seguidores_instagram'], ['m-tt','seguidores_tiktok'],
+                 ['m-eps','episodios_al_aire']];
+    var ultima = '';
+    pares.forEach(function(p){
+      var dato = m[p[1]]; if (!dato || !dato.v) return;
+      var el = document.getElementById(p[0]); if (!el) return;
+      el.textContent = numAR(dato.v);
+      if (dato.at && dato.at > ultima) ultima = dato.at;
+    });
+    var nota = document.getElementById('m-actualizado');
+    if (nota && ultima){
+      var d = new Date(ultima);
+      if (!isNaN(d)){
+        var hs = Math.floor((Date.now() - d.getTime()) / 3600000);
+        nota.textContent = hs < 1 ? 'números actualizados recién'
+          : (hs < 24 ? 'números actualizados hace ' + hs + (hs === 1 ? ' hora' : ' horas')
+                     : 'números actualizados hace ' + Math.floor(hs/24) + ' días');
+      }
+    }
+  }
+
   /* ---- modo servidor ---- */
   function traer(){
     return fetch(SYNC_URL, {cache:'no-store'})
@@ -983,6 +1016,7 @@ Instagram: @elbogeyclub</div>
         ESTADO = d.estado;
         if (MODO === 'local') MODO = 'servidor';
         aplicarEstado();
+        aplicarMetricas(d.metricas);
         return true;
       });
   }
