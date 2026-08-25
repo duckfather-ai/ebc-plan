@@ -925,14 +925,16 @@ Instagram: @elbogeyclub</div>
 
   /* ---------- checkbox persistence (per browser) ---------- */
   /* ================= tildes compartidos =================
-     La página se guarda a sí misma: lo que marca una persona lo ven todas. */
+     Fuente principal: el servidor de tildes del equipo (Apps Script).
+     Si no se puede llegar, la página cae a modo local sin romperse. */
+
+  var SYNC_URL = 'https://script.google.com/macros/s/AKfycbwrP787QMDMJuJqhHYRbhH5b60nT3wTughSCR0Tm3nLb4PJI2ISyd0yDNGm5exNi8_Acw/exec';
 
   var SRC = '<!DOCTYPE html>\n' + document.documentElement.outerHTML.replace(/^(<html[^>]*)\sdata-theme="[^"]*"/, '$1');
-
   var ESTADO = {};
   try { ESTADO = JSON.parse(document.getElementById('ebc-estado').textContent || '{}') || {}; } catch(e){ ESTADO = {}; }
 
-  var API = null, MODO = 'local', pendiente = null;
+  var MODO = 'local', API = null, pendiente = null, publicando = null;
 
   var KEY = 'ebc.checks.v1';
   var local = {};
@@ -942,9 +944,10 @@ Instagram: @elbogeyclub</div>
   function setYo(v){ try { localStorage.setItem('ebc.yo', v); } catch(e){} }
 
   function estadoDe(id){
-    if (MODO === 'compartido') return ESTADO[id] || null;
-    return local[id] ? {v:true, by:''} : null;
+    if (MODO === 'local') return local[id] ? {v:true, by:''} : null;
+    return ESTADO[id] || null;
   }
+  function marcado(id){ var st = estadoDe(id); return !!(st && st.v); }
 
   function pintarFirma(cb){
     var li = cb.closest('li'); if (!li) return;
@@ -957,27 +960,12 @@ Instagram: @elbogeyclub</div>
     }
   }
 
-  function regenerar(){
-    var json = JSON.stringify(ESTADO).replace(/</g, '\\u003c');
-    return SRC.replace(
-      /(<script type="application\/json" id="ebc-estado">)[\s\S]*?(<\/script>)/,
-      function(m, a, b){ return a + json + b; }
-    );
-  }
-
-  function publicar(){
-    if (MODO !== 'compartido' || !API) return;
-    clearTimeout(pendiente);
-    pendiente = setTimeout(function(){
-      marcarSync('guardando…', 'guardando');
-      API.publish(regenerar()).then(function(){
-        marcarSync('guardado para todo el equipo', 'ok');
-      }).catch(function(err){
-        var c = err && err.code;
-        if (c === 'conflict') marcarSync('alguien guardó primero, se recarga con lo último', 'aviso');
-        else marcarSync('no se pudo guardar', 'error');
-      });
-    }, 700);
+  function aplicarEstado(){
+    document.querySelectorAll('.chk input[type=checkbox]').forEach(function(cb){
+      var v = marcado(cb.id);
+      if (cb.checked !== v) cb.checked = v;
+      pintarFirma(cb);
+    });
   }
 
   function marcarSync(msg, tipo){
@@ -986,28 +974,70 @@ Instagram: @elbogeyclub</div>
     el.className = 'syncpill ' + (tipo || '');
   }
 
-  function guardar(id, v){
-    if (MODO === 'compartido'){
-      if (v) ESTADO[id] = {v:true, by:yo(), at:new Date().toISOString()};
-      else delete ESTADO[id];
-      publicar();
-    } else {
-      local[id] = v;
-      try { localStorage.setItem(KEY, JSON.stringify(local)); } catch(e){}
-    }
+  /* ---- modo servidor ---- */
+  function traer(){
+    return fetch(SYNC_URL, {cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (!d || !d.estado) throw new Error('respuesta inesperada');
+        ESTADO = d.estado; aplicarEstado();
+        return true;
+      });
+  }
+  function mandar(id, v){
+    return fetch(SYNC_URL, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({id:id, v:v, by:yo()})
+    }).then(function(r){ return r.json(); })
+      .then(function(d){ if (d && d.estado){ ESTADO = d.estado; aplicarEstado(); } });
   }
 
-  function marcado(id){ var st = estadoDe(id); return !!(st && st.v); }
+  /* ---- modo artifact (la página se guarda a sí misma) ---- */
+  function regenerar(){
+    var json = JSON.stringify(ESTADO).replace(/</g, '\\u003c');
+    return SRC.replace(
+      /(<script type="application\/json" id="ebc-estado">)[\s\S]*?(<\/script>)/,
+      function(m, x, y){ return x + json + y; }
+    );
+  }
+
+  function guardar(id, v){
+    if (v) ESTADO[id] = {v:true, by:yo(), at:new Date().toISOString()};
+    else delete ESTADO[id];
+
+    if (MODO === 'local'){
+      local[id] = v;
+      try { localStorage.setItem(KEY, JSON.stringify(local)); } catch(e){}
+      return;
+    }
+    clearTimeout(pendiente);
+    marcarSync('guardando…', 'guardando');
+    if (MODO === 'servidor'){
+      mandar(id, v)
+        .then(function(){ marcarSync('guardado para todo el equipo', 'ok'); })
+        .catch(function(){ marcarSync('no se pudo guardar, revisá la conexión', 'error'); });
+    } else {
+      pendiente = setTimeout(function(){
+        API.publish(regenerar())
+          .then(function(){ marcarSync('guardado para todo el equipo', 'ok'); })
+          .catch(function(err){
+            marcarSync(err && err.code === 'conflict'
+              ? 'alguien guardó primero, se recarga con lo último'
+              : 'no se pudo guardar', 'error');
+          });
+      }, 700);
+    }
+  }
 
   function bindChecks(root){
     (root || document).querySelectorAll('.chk input[type=checkbox]').forEach(function(cb){
       if (cb.dataset.bound) return;
       cb.dataset.bound = '1';
-      var st = estadoDe(cb.id);
-      if (st && st.v) cb.checked = true;
+      if (marcado(cb.id)) cb.checked = true;
       pintarFirma(cb);
       cb.addEventListener('change', function(){
-        if (MODO === 'compartido' && cb.checked && !yo()){
+        if (MODO !== 'local' && cb.checked && !yo()){
           var n = prompt('¿Quién sos? Se muestra al lado de lo que marcás.');
           if (n && n.trim()) setYo(n.trim());
         }
@@ -1018,21 +1048,23 @@ Instagram: @elbogeyclub</div>
   }
   bindChecks(document);
 
+  /* ---- arranque: servidor → artifact → local ---- */
   (function(){
-    var puede = typeof window !== 'undefined' && window.claude && typeof window.claude.use === 'function';
-    if (!puede){ marcarSync('los tildes se guardan solo en este navegador', 'aviso'); return; }
     marcarSync('conectando…', 'guardando');
-    window.claude.use('artifact').then(function(a){
-      if (!a){ marcarSync('estás viendo en modo lectura: podés mirar pero no marcar', 'aviso'); return; }
-      API = a; MODO = 'compartido';
-      document.querySelectorAll('.chk input[type=checkbox]').forEach(function(cb){
-        var st = estadoDe(cb.id);
-        cb.checked = !!(st && st.v);
-        pintarFirma(cb);
-      });
+    traer().then(function(){
+      MODO = 'servidor';
       marcarSync('lo que marcás lo ve todo el equipo', 'ok');
+      setInterval(function(){ traer().catch(function(){}); }, 30000);
     }).catch(function(){
-      marcarSync('los tildes se guardan solo en este navegador', 'aviso');
+      var puede = typeof window !== 'undefined' && window.claude && typeof window.claude.use === 'function';
+      if (!puede){ MODO = 'local'; aplicarEstado(); marcarSync('los tildes se guardan solo en este navegador', 'aviso'); return; }
+      window.claude.use('artifact').then(function(x){
+        if (!x){ MODO = 'local'; aplicarEstado(); marcarSync('estás viendo en modo lectura: podés mirar pero no marcar', 'aviso'); return; }
+        API = x; MODO = 'artifact'; aplicarEstado();
+        marcarSync('lo que marcás lo ve todo el equipo', 'ok');
+      }).catch(function(){
+        MODO = 'local'; aplicarEstado(); marcarSync('los tildes se guardan solo en este navegador', 'aviso');
+      });
     });
   })();
 
