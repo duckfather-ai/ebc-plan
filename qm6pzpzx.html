@@ -1116,20 +1116,41 @@ Instagram: @elbogeyclub</div>
     });
   })();
 
-  /* ---------- countdowns ---------- */
-  function daysTo(iso){
-    var t = new Date(iso).getTime() - Date.now();
-    return Math.ceil(t / 86400000);
+  /* ---------- cuenta regresiva al próximo estreno ---------- */
+  /* Compara días de calendario, no milisegundos: a las 10 de la mañana de un
+     jueves de estreno tiene que decir "hoy", no "mañana". */
+  function diasDeCalendario(destino){
+    var h = new Date();
+    var a = new Date(h.getFullYear(), h.getMonth(), h.getDate());
+    var b = new Date(destino.getFullYear(), destino.getMonth(), destino.getDate());
+    return Math.round((b - a) / 86400000);
   }
-  function paint(el, iso, doneTxt){
-    var n = daysTo(iso);
+
+  function proximoEstreno(){
+    /* sale del propio calendario, así no hay que tocar nada cada semana */
+    var hoy = new Date();
+    var claveHoy = hoy.getFullYear() + '-' +
+      String(hoy.getMonth()+1).padStart(2,'0') + '-' +
+      String(hoy.getDate()).padStart(2,'0');
+    var claves = Object.keys(DIAS).filter(function(k){
+      return DIAS[k].t === 'estreno' && k >= claveHoy;
+    }).sort();
+    return claves.length ? claves[0] : null;
+  }
+
+  function pintarContador(){
+    var el = document.getElementById('s1');
     if (!el) return;
+    var clave = proximoEstreno();
+    if (!clave){ el.textContent = '—'; return; }
+    var p = clave.split('-');
+    var destino = new Date(+p[0], +p[1]-1, +p[2], 17, 0, 0);   // 17:00 hora local
+    var n = diasDeCalendario(destino);
     if (n > 1) el.textContent = n + ' días';
     else if (n === 1) el.textContent = 'mañana';
-    else if (n === 0) el.textContent = 'hoy';
-    else el.textContent = doneTxt;
+    else if (n === 0) el.textContent = (Date.now() < destino.getTime()) ? 'hoy' : 'ya salió';
+    else el.textContent = 'ya salió';
   }
-  paint(document.getElementById('s1'), '2026-08-27T17:00:00-03:00', 'hoy sale');
 
   /* ================= calendario ================= */
   var DIAS = {
@@ -1449,12 +1470,23 @@ Instagram: @elbogeyclub</div>
            : prox.ev.e==='filmado' ? '. Todavía está en amarillo: hay que terminar la edición y exportar.'
            : '.');
       } else {
-        cab.querySelector('h4').textContent='Esta semana no hay estreno';
-        cab.querySelector('p').textContent='Buen momento para adelantar edición y sumar al colchón.';
+        // ¿ya salió el estreno de esta semana, o directamente no había?
+        var yaSalio=null;
+        for (var y=0;y<7;y++){ if (dd[y].ev && dd[y].ev.t==='estreno' && dd[y].k<hoy) yaSalio=dd[y]; }
+        if (yaSalio){
+          cab.querySelector('h4').textContent='El estreno de esta semana ya salió';
+          cab.querySelector('p').innerHTML='<b>'+yaSalio.ev.n+'</b> salió el '+NOMDIA[yaSalio.f.getDay()]+' '+yaSalio.f.getDate()+
+            '. Ahora toca empujar la difusión y sacar los dos reels del capítulo.';
+        } else {
+          cab.querySelector('h4').textContent='Esta semana no hay estreno';
+          cab.querySelector('p').textContent='Buen momento para adelantar edición y sumar al colchón.';
+        }
       }
     }
   }
   pintarSemana();
+  pintarContador();
+  setInterval(pintarContador, 60000);
 
   /* ---------- copy buttons ---------- */
   document.querySelectorAll('[data-copy]').forEach(function(btn){
